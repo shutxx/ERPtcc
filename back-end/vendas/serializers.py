@@ -8,6 +8,7 @@ class ItensVendaSerializer(serializers.ModelSerializer):
             'IdItensVenda',
             'IdProduto',
             'QtdProduto',
+            'NomeProduto',
             'ValorUnitario',
             'ValorTotal'
         ]

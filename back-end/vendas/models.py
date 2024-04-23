@@ -21,6 +21,7 @@ class ItensVenda(models.Model):
     IdVenda = models.ForeignKey(Venda, on_delete=models.CASCADE, related_name='itens_venda')
     IdProduto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     QtdProduto = models.IntegerField(blank=False)
+    NomeProduto = models.CharField(blank=False, max_length=255, default='default')
     ValorUnitario = models.FloatField(blank=False, max_length=10)
     ValorTotal = models.FloatField(blank=False, max_length=10)
 
