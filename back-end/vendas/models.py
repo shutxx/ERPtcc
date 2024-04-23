@@ -18,7 +18,7 @@ class Venda(models.Model):
 
 class ItensVenda(models.Model):
     IdItensVenda = models.AutoField(primary_key=True)
-    IdVenda = models.ForeignKey(Venda, on_delete=models.CASCADE)
+    IdVenda = models.ForeignKey(Venda, on_delete=models.CASCADE, related_name='itens_venda')
     IdProduto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     QtdProduto = models.IntegerField(blank=False)
     ValorUnitario = models.FloatField(blank=False, max_length=10)

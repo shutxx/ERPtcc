@@ -6,7 +6,6 @@ class ItensVendaSerializer(serializers.ModelSerializer):
         model = ItensVenda
         fields = [
             'IdItensVenda',
-            'IdVenda',
             'IdProduto',
             'QtdProduto',
             'ValorUnitario',
@@ -14,7 +13,7 @@ class ItensVendaSerializer(serializers.ModelSerializer):
         ]
 
 class VendaSerializer(serializers.ModelSerializer):
-    itens_venda = ItensVendaSerializer(many=True) 
+    itens_venda = ItensVendaSerializer(many=True)
 
     class Meta:
         model = Venda
@@ -26,9 +25,9 @@ class VendaSerializer(serializers.ModelSerializer):
             'itens_venda' 
         ]
 
-    def create_venda(self, itens_venda):
-        itens_venda_data = itens_venda.pop('itens_venda')
-        venda = Venda.objects.create(**itens_venda)
-        for item_data in itens_venda_data: 
-            ItensVenda.objects.create(IdVenda=venda, **item_data)  
+    def create(self, validated_data):
+        itens_venda_data = validated_data.pop('itens_venda')
+        venda = Venda.objects.create(**validated_data)
+        for item_data in itens_venda_data:
+            ItensVenda.objects.create(IdVenda=venda, **item_data)
         return venda
