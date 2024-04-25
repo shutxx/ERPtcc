@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .models import Venda, ItensVenda
+from .models import Venda
 from .serializers import VendaSerializer
 from rest_framework.pagination import PageNumberPagination
 

@@ -6,7 +6,6 @@ class ItensCompraSerializer(serializers.ModelSerializer):
         model = ItensCompra
         fields = [
             'IdItensCompra',
-            'IdCompra',
             'IdProduto',
             'ValorUnitario',
             'QtdProduto',
@@ -14,7 +13,7 @@ class ItensCompraSerializer(serializers.ModelSerializer):
         ]
 
 class CompraSerializer(serializers.ModelSerializer):
-    Itens_Compra = ItensCompraSerializer(many=True)
+    itens_compra = ItensCompraSerializer(many=True)
     
     class Meta:
         model = Compra
@@ -23,5 +22,16 @@ class CompraSerializer(serializers.ModelSerializer):
             'IdFornecedor',
             'DataCompra',
             'ValorTotal',
-            'Itens_Compra'
+            'itens_compra'
         ]
+
+    def create(self, validated_data):
+        itens_compra_data = validated_data.pop('itens_compra')
+        compra = Compra.objects.create(**validated_data)  
+
+        for item_data in itens_compra_data:
+            ItensCompra.objects.create(IdCompra=compra, **item_data)
+
+        return compra
+
+    
