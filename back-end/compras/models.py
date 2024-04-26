@@ -20,6 +20,7 @@ class ItensCompra(models.Model):
     IdItensCompra = models.AutoField(primary_key=True)
     IdCompra = models.ForeignKey(Compra, on_delete=models.CASCADE, related_name='itens_compra')
     IdProduto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    NomeProduto = models.CharField(blank=False, max_length=255, default='default')
     ValorUnitario = models.FloatField(blank=False, max_length=10)
     QtdProduto = models.IntegerField(blank=False)
     ValorTotal = models.FloatField(blank=False, max_length=10)
