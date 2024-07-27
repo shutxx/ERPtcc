@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Compra, ItensCompra
+from fornecedores.serializers import FornecedorSerializer
 
 class ItensCompraSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,15 +15,16 @@ class ItensCompraSerializer(serializers.ModelSerializer):
         ]
 
 class CompraSerializer(serializers.ModelSerializer):
+    IdFornecedor = FornecedorSerializer(read_only=True)
     itens_compra = ItensCompraSerializer(many=True)
     
     class Meta:
         model = Compra
         fields = [
             'IdCompra',
-            'IdFornecedor',
             'DataCompra',
             'ValorTotal',
+            'IdFornecedor',
             'itens_compra'
         ]
 

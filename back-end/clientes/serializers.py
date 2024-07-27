@@ -20,6 +20,8 @@ class ClienteSerializer(serializers.ModelSerializer):
     def validate_CPF(self, cpf):
         if not valida_cpf(cpf):
             raise serializers.ValidationError('CPF inválido.')
+        if self.instance:
+            return cpf
         if Cliente.objects.filter(CPF=cpf).exists():
             raise serializers.ValidationError('Já existe um cliente com este CPF.')
         return cpf

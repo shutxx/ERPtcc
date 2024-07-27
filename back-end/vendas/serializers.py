@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Venda, ItensVenda
+from clientes.serializers import ClienteSerializer
 
 class ItensVendaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,16 +15,17 @@ class ItensVendaSerializer(serializers.ModelSerializer):
         ]
 
 class VendaSerializer(serializers.ModelSerializer):
+    IdCliente = ClienteSerializer(read_only=True)
     itens_venda = ItensVendaSerializer(many=True)
 
     class Meta:
         model = Venda
         fields = [
             'IdVenda',
-            'IdCliente',
             'DataVenda',
             'TotalVenda',
-            'itens_venda' 
+            'IdCliente',
+            'itens_venda'
         ]
 
     def create(self, validated_data):
