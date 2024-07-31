@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Venda, ItensVenda
+from clientes.models import Cliente
 from clientes.serializers import ClienteSerializer
 
 class ItensVendaSerializer(serializers.ModelSerializer):
@@ -25,13 +26,16 @@ class VendaSerializer(serializers.ModelSerializer):
             'DataVenda',
             'TotalVenda',
             'IdCliente',
-            'itens_venda'
+            'itens_venda' 
         ]
 
     def create(self, validated_data):
         itens_venda_data = validated_data.pop('itens_venda')
+        cliente_id = self.initial_data.get('IdCliente')
 
-        venda = Venda.objects.create(**validated_data)
+        cliente = Cliente.objects.get(pk=cliente_id)
+        
+        venda = Venda.objects.create(IdCliente=cliente, **validated_data)
         for item_data in itens_venda_data:
             ItensVenda.objects.create(IdVenda=venda, **item_data)
             
@@ -39,6 +43,13 @@ class VendaSerializer(serializers.ModelSerializer):
     
     def update(self, instance, validated_data):
         itens_venda_data = validated_data.pop('itens_venda')
+        cliente_id = self.initial_data.get('IdCliente')
+        
+        if cliente_id:
+            cliente = Cliente.objects.get(pk=cliente_id)
+            instance.IdCliente = cliente
+            instance.save()
+        
         instance = super().update(instance, validated_data)
 
         itens_venda_ids = [item_data.get('IdItensVenda') for item_data in itens_venda_data]
