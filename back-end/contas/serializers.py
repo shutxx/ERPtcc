@@ -6,11 +6,11 @@ class ContaPagarSerializer(serializers.ModelSerializer):
         model = ContaPagar
         fields = [
             'IdContaPagar',
-            'IdFornecedor',
+            'IdCompra',
             'Valor',
             'DataVencimento',
-            'DataPagamento',
-            'Pago'
+            'DataEntrada',
+            'Status'
         ]
 
 class ContaReceberSerializer(serializers.ModelSerializer):
@@ -18,9 +18,9 @@ class ContaReceberSerializer(serializers.ModelSerializer):
         model = ContaReceber
         fields = [
             'IdContaReceber',
-            'IdCliente',
+            'IdVenda',
             'Valor',
+            'DataEntrada',
             'DataVencimento',
-            'DataPagamento',
-            'Pago'
+            'Status'
         ]

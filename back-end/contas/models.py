@@ -1,16 +1,16 @@
 from django.db import models
-from clientes.models import Cliente
-from fornecedores.models import Fornecedor
+from vendas.models import Venda
+from compras.models import Compra
 
 class Conta(models.Model):
     Valor = models.DecimalField(max_digits=10, decimal_places=2)
     DataVencimento = models.DateField()
-    DataPagamento = models.DateField(blank=True, null=True)
-    Pago = models.BooleanField(default=False)
+    DataEntrada = models.DateField(blank=True, null=True)
+    Status = models.BooleanField(default=False)
 
 class ContaPagar(Conta):
     IdContaPagar = models.AutoField(primary_key=True)
-    IdFornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
+    IdCompra = models.ForeignKey(Compra, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'ContaPagar'
@@ -22,7 +22,7 @@ class ContaPagar(Conta):
 
 class ContaReceber(Conta):
     IdContaReceber = models.AutoField(primary_key=True)
-    IdCliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    IdVenda = models.ForeignKey(Venda, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'ContaReceber'

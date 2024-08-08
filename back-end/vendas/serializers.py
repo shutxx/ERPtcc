@@ -1,7 +1,10 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from .models import Venda, ItensVenda
+from datetime import datetime, timedelta
 from clientes.models import Cliente
 from clientes.serializers import ClienteSerializer
+from contas.models import ContaReceber
 
 class ItensVendaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,6 +18,18 @@ class ItensVendaSerializer(serializers.ModelSerializer):
             'ValorTotal'
         ]
 
+class VendaContaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Venda
+        fields = [
+            'IdVenda',
+            'DataVenda',
+            'TotalVenda',
+            'FormaPagamento',
+            'Prazo',
+            'Parcelas'
+        ] 
+
 class VendaSerializer(serializers.ModelSerializer):
     IdCliente = ClienteSerializer(read_only=True)
     itens_venda = ItensVendaSerializer(many=True)
@@ -25,11 +40,28 @@ class VendaSerializer(serializers.ModelSerializer):
             'IdVenda',
             'DataVenda',
             'TotalVenda',
+            'FormaPagamento',
+            'Prazo',
+            'Parcelas',
             'IdCliente',
-            'itens_venda' 
-        ]
+            'itens_venda'
+        ] 
 
     def create(self, validated_data):
+
+        prazo = validated_data['Prazo'].split(',')
+        parcelas = validated_data['Parcelas']
+        total_venda = validated_data['TotalVenda']
+        valor_parcela = total_venda / parcelas
+        data_entrada = datetime.now().date()
+
+        if len(prazo) != parcelas:
+            raise ValidationError("O número de prazos deve ser igual ao número de parcelas.")
+
+        data_venda = validated_data.get('DataVenda')
+        if isinstance(data_venda, str):
+            data_venda = datetime.strptime(data_venda, "%Y-%m-%d").date()
+
         itens_venda_data = validated_data.pop('itens_venda')
         cliente_id = self.initial_data.get('IdCliente')
 
@@ -38,6 +70,18 @@ class VendaSerializer(serializers.ModelSerializer):
         venda = Venda.objects.create(IdCliente=cliente, **validated_data)
         for item_data in itens_venda_data:
             ItensVenda.objects.create(IdVenda=venda, **item_data)
+
+        contador_parcela = 1
+        for dias in prazo:
+            data_vencimento = data_venda + timedelta(days=int(dias))
+            ContaReceber.objects.create(
+                IdVenda=venda,
+                Valor=valor_parcela,
+                DataVencimento=data_vencimento,
+                DataEntrada=data_entrada,
+                Status=False
+            )
+            contador_parcela += 1
             
         return venda
     

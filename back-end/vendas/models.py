@@ -7,6 +7,9 @@ class Venda(models.Model):
     IdCliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     DataVenda = models.DateField(blank=False)
     TotalVenda = models.FloatField(blank=False, max_length=10)
+    Prazo = models.CharField(blank=False, max_length=15, default='default')
+    Parcelas = models.IntegerField(blank=False, default=1)
+    FormaPagamento = models.CharField(blank=False, max_length=15, default='default')
 
     class Meta:
         verbose_name = 'Venda'
