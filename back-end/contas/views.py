@@ -34,22 +34,16 @@ class ContasPagar():
 
 
 class ContasReceber():
-    # class ContaReceberListAPIView(generics.ListAPIView):
-    #     queryset =  ContaReceber.objects.all()
-    #     serializer_class = ContaReceberSerializer
-    #     pagination_class = PageNumberPagination
-
     class ContaReceberListAPIView(APIView):
         def get(self, request):
             vendas = Venda.objects.all()
             response_data = []
-
+            
             paginator = PageNumberPagination()
 
             for venda in vendas:
-                contas_receber = ContaReceber.objects.filter(IdVenda=venda)
-                paginated_contas_receber = paginator.paginate_queryset(contas_receber, request)
-                contas_receber_serializer = ContaReceberSerializer(paginated_contas_receber, many=True)
+                contas_receber = ContaReceber.objects.filter(IdVenda=venda.IdVenda)
+                contas_receber_serializer = ContaReceberSerializer(contas_receber, many=True)
                 venda_serializer = VendaContaSerializer(venda)
 
                 response_data.append({
@@ -57,8 +51,8 @@ class ContasReceber():
                     "parcelas": contas_receber_serializer.data
                 })
 
-            return paginator.get_paginated_response(response_data)
-
+            paginated_response_data = paginator.paginate_queryset(response_data, request)
+            return paginator.get_paginated_response(paginated_response_data)
 
     class ContaReceberCreateAPIView(generics.CreateAPIView):
         queryset =  ContaReceber.objects.all()
