@@ -1,0 +1,1319 @@
+{
+	"info": {
+		"_postman_id": "f806dcb8-5f41-4c39-923c-6d2692cc99c2",
+		"name": "ERPtcc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29693682"
+	},
+	"item": [
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 964ecabd115faeb4bf11527fc6f00f5baa2ca718",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/clientes/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"NomePessoa\": \"testee sergio\",\r\n        \"CPF\": \"967.802.610-41\",\r\n        \"NomeRua\": \"belo horizonte\",\r\n        \"Numero\": \"170\",\r\n        \"NomeBairro\": \"zona 2\",\r\n        \"Email\": \"shuttxx09@gmail.com\",\r\n        \"Telefone\": \"(44)99812-5151\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/detail/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"detail",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/delete/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomePessoa\": \"teste allan sergio\",\r\n    \"CPF\": \"967.802.610-41\",\r\n    \"NomeRua\": \"rua belo horizonte\",\r\n    \"Numero\": \"170\",\r\n    \"NomeBairro\": \"zona 2\",\r\n    \"Email\": \"shuttxx09@gmail.com\",\r\n    \"Telefone\": \"(44)99812-5151\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/update/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "compra",
+			"item": [
+				{
+					"name": "compras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/compras/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"compras",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar compra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"DataCompra\": \"2024-04-17\",\r\n    \"ValorTotal\": 150.00,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"mouse\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        },\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"teclado\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/compra/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"compra",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "compra",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/compra/detail/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"compra",
+								"detail",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "compra",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/compra/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"compra",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "compra",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"DataCompra\": \"2024-04-17\",\r\n    \"ValorTotal\": 150.00,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"monitor\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        },\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"processador\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/compra/update/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"compra",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contas pagar",
+			"item": [
+				{
+					"name": "contas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/contas-pagar/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contas-pagar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar conta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"Valor\": \"1500.00\",\r\n    \"DataVencimento\": \"2024-04-17\",\r\n    \"DataPagamento\": \"2024-04-17\",\r\n    \"Pago\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-pagar/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-pagar",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-pagar/detail/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-pagar",
+								"detail",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-pagar/delete/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-pagar",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"Valor\": \"1500.50\",\r\n    \"DataVencimento\": \"2024-04-17\",\r\n    \"DataPagamento\": \"2024-04-17\",\r\n    \"Pago\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-pagar/update/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-pagar",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contas receber",
+			"item": [
+				{
+					"name": "contas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/contas-receber/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"contas-receber",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar conta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdVenda\": 1,\r\n    \"Valor\": \"1500.00\",\r\n    \"DataVencimento\": \"2024-04-17\",\r\n    \"DataEntrada\": \"2024-04-17\",\r\n    \"Status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-receber",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/detail/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-receber",
+								"detail",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/delete/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-receber",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdVenda\": 31,\r\n    \"Valor\": \"37.50\",\r\n    \"DataVencimento\": \"2024-04-27\",\r\n    \"DataEntrada\": \"2024-08-07\",\r\n    \"Status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/update/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-receber",
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fornecedor",
+			"item": [
+				{
+					"name": "fornecedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedores/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"fornecedores",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar fornecedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeFantasia\": \"dela torre\",\r\n    \"NomeJuridico\": \"dela torre condimentos\",\r\n    \"Email\": \"delatorre@gmail.com\",\r\n    \"Telefone\": \"(44)30300-4545\",\r\n    \"CNPJ\": \"43.704.898/0001-91\",\r\n    \"NomeRua\": \"belo horizonte\",\r\n    \"Numero\": \"246\",\r\n    \"NomeBairro\": \"adelino paggani\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"fornecedor",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fornecedor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/detail/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"fornecedor",
+								"detail",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fornecedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"fornecedor",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fornecedor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeFantasia\": \"de la torre\",\r\n    \"NomeJuridico\": \"dela torre condimentos ltda\",\r\n    \"Email\": \"delatorre@gmail.com\",\r\n    \"Telefone\": \"4440028922\",\r\n    \"CNPJ\": \"88.206.469/0001-22\",\r\n    \"NomeRua\": \"belo horizonte\",\r\n    \"Numero\": \"246\",\r\n    \"NomeBairro\": \"adelino paggani\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/update/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"fornecedor",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "produtos",
+			"item": [
+				{
+					"name": "produtos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/produtos/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeProduto\": \"teste\",\r\n    \"Descricao\": \"Lorem ipsum dolor sit amet, consectetur adipiscing\\n elit. Vestibulum vehicula erat sed accumsan gravi\\nda. Proin quis interdum quam, sit amet aliquam sem\\n. Phasellus sodales scelerisque porta.\",\r\n    \"Preco\": 19.5,\r\n    \"UnidMedida\": \"un\",\r\n    \"Estoque\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/produto/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/produto/detail/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"detail",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/produto/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeProduto\": \"Pc gammer\",\r\n    \"Descricao\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\r\n    \"Preco\": 1500.00,\r\n    \"UnidMedida\": \"un\",\r\n    \"Estoque\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/produto/update/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"shuttxx\",\r\n    \"password\": \"07081995\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/usuarios/list/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"usuarios",
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/usuario/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout/Delete Token",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token d357501be558bf21c507c6d1b32524ce96a2f8d0",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/logout/964ecabd115faeb4bf11527fc6f00f5baa2ca718",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"logout",
+								"964ecabd115faeb4bf11527fc6f00f5baa2ca718"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "venda",
+			"item": [
+				{
+					"name": "vendas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/vendas/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"vendas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar venda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCliente\": 1,\r\n    \"DataVenda\": \"2024-08-07\",\r\n    \"TotalVenda\": 150.0,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10,20\",\r\n    \"Parcelas\": 2,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdItensVenda\": 1,\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"mouse\",\r\n            \"ValorUnitario\": 1500.0,\r\n            \"ValorTotal\": 3000.0\r\n        },\r\n        {\r\n            \"IdItensVenda\": 2,\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"teclado\",\r\n            \"ValorUnitario\": 1500.0,\r\n            \"ValorTotal\": 3000.0\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "venda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/detail/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"detail",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "venda",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "venda",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IdCliente\": 1,\r\n    \"DataVenda\": \"2024-04-17\",\r\n    \"TotalVenda\": 150.00,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"mouse\",\r\n            \"ValorUnitario\": 1500.0,\r\n            \"ValorTotal\": 3000.0\r\n        },\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"teclado\",\r\n            \"ValorUnitario\": 1500.0,\r\n            \"ValorTotal\": 3000.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/update/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
