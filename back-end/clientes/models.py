@@ -3,7 +3,7 @@ from django.db import models
 class Cliente(models.Model):
     IdPessoa = models.AutoField(primary_key=True)
     NomePessoa = models.CharField(blank=False, max_length=255)
-    CPF = models.CharField(blank=False, max_length=14)
+    CPFouCNPJ = models.CharField(blank=False, max_length=18)
     NomeRua = models.CharField(blank=False, max_length=255)
     Numero = models.CharField(blank=False, max_length=10)
     NomeBairro = models.CharField(blank=False, max_length=255)

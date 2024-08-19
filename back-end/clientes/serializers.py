@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Cliente
-from .utils import valida_cpf
+from .utils import valida_cpf, validar_cnpj
 import re
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -11,20 +11,24 @@ class ClienteSerializer(serializers.ModelSerializer):
             'NomePessoa',
             'Email',
             'Telefone',
-            'CPF',
+            'CPFouCNPJ',
             'NomeRua',
             'Numero',
             'NomeBairro'
         ]
 
-    def validate_CPF(self, cpf):
-        if not valida_cpf(cpf):
-            raise serializers.ValidationError('CPF inválido.')
-        if self.instance:
-            return cpf
-        if Cliente.objects.filter(CPF=cpf).exists():
-            raise serializers.ValidationError('Já existe um cliente com este CPF.')
-        return cpf
+    def validate_CPFouCNPJ(self, documento):
+        if valida_cpf(documento):
+            is_valid = True
+        elif validar_cnpj(documento):
+            is_valid = True
+        else:
+            raise serializers.ValidationError('CPF ou CNPJ inválido.')
+
+        if not self.instance and Cliente.objects.filter(CPFouCNPJ=documento).exists():
+            raise serializers.ValidationError('Já existe um cliente com este documento.')
+        
+        return documento
     
     def validate_Telefone(self, telefone):
         if not re.match(r'^\(?(\d{2})\)? ?\d{4,5}-\d{4}$', telefone):

@@ -21,6 +21,8 @@ class FornecedorSerializer(serializers.ModelSerializer):
     def validate_CNPJ(self, cnpj):
         if not valida_cnpj(cnpj):
             raise serializers.ValidationError('CNPJ inválido')
+        if self.instance:
+            return cnpj
         if Fornecedor.objects.filter(CNPJ=cnpj).exists():
             raise serializers.ValidationError('Já existe um fornecedor com este CNPJ')
         return cnpj
@@ -29,3 +31,4 @@ class FornecedorSerializer(serializers.ModelSerializer):
         if not re.match(r'^\(?(\d{2})\)? ?\d{4,5}-\d{4}$', telefone):
             raise serializers.ValidationError('Telefone inválido.')
         return telefone
+    
