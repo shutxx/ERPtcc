@@ -1,6 +1,10 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from .models import Compra, ItensCompra
+from datetime import datetime, timedelta
+from .models import Fornecedor
 from fornecedores.serializers import FornecedorSerializer
+from contas.models import ContaPagar
 
 class ItensCompraSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,6 +18,18 @@ class ItensCompraSerializer(serializers.ModelSerializer):
             'ValorTotal'
         ]
 
+class CompraContaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Compra
+        fields = [
+            'IdCompra',
+            'DataCompra',
+            'ValorTotal',
+            'FormaPagamento',
+            'Prazo',
+            'Parcelas'
+        ]
+
 class CompraSerializer(serializers.ModelSerializer):
     IdFornecedor = FornecedorSerializer(read_only=True)
     itens_compra = ItensCompraSerializer(many=True)
@@ -24,16 +40,48 @@ class CompraSerializer(serializers.ModelSerializer):
             'IdCompra',
             'DataCompra',
             'ValorTotal',
+            'FormaPagamento',
+            'Prazo',
+            'Parcelas',
             'IdFornecedor',
             'itens_compra'
         ]
 
     def create(self, validated_data):
-        itens_compra_data = validated_data.pop('itens_compra')
-        compra = Compra.objects.create(**validated_data)  
 
+        prazo = validated_data['Prazo'].split(',')
+        parcelas = validated_data['Parcelas']
+        total_compra = validated_data['ValorTotal']
+        valor_parcela = total_compra / parcelas
+        data_entrada = datetime.now().date()
+
+        if len(prazo) != parcelas:
+            raise ValidationError("O número de prazos deve ser igual ao número de parcelas.")
+        
+        data_venda = validated_data.get('DataCompra')
+        if isinstance(data_venda, str):
+            data_venda = datetime.strptime(data_venda, "%Y-%m-%d").date()
+
+        itens_compra_data = validated_data.pop('itens_compra')
+        fornecedor_id = self.initial_data.get('IdFornecedor')
+        
+        fornecedor = Fornecedor.objects.get(pk=fornecedor_id)
+
+        compra = Compra.objects.create(IdFornecedor=fornecedor, **validated_data)
         for item_data in itens_compra_data:
             ItensCompra.objects.create(IdCompra=compra, **item_data)
+
+        contador_parcela = 1
+        for dias in prazo:
+            data_vencimento = data_venda + timedelta(days=int(dias))
+            ContaPagar.objects.create(
+                IdCompra=compra,
+                Valor=valor_parcela,
+                DataVencimento=data_vencimento,
+                DataEntrada=data_entrada,
+                Status=False
+            )
+            contador_parcela += 1
 
         return compra
     

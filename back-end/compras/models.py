@@ -7,7 +7,10 @@ class Compra(models.Model):
     IdFornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
     DataCompra = models.DateField(blank=False)
     ValorTotal = models.FloatField(blank=False, max_length=10)
-
+    Prazo = models.CharField(blank=False, max_length=15, default='default')
+    Parcelas = models.IntegerField(blank=False, default=1)
+    FormaPagamento = models.CharField(blank=False, max_length=15, default='default')
+    
     class Meta:
         verbose_name = 'Compra'
         verbose_name_plural = 'Compras'

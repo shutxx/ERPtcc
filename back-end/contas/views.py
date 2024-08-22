@@ -5,15 +5,32 @@ from rest_framework.pagination import PageNumberPagination
 
 from vendas.serializers import VendaContaSerializer
 from vendas.models import Venda
+from compras.models import Compra
+from compras.serializers import CompraContaSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
 class ContasPagar():
-    class ContaPagarListAPIView(generics.ListAPIView):
-        queryset =  ContaPagar.objects.all()
-        serializer_class = ContaPagarSerializer
-        pagination_class = PageNumberPagination
+    class ContaPagarListAPIView(APIView):
+        def get(self, request):
+            compras = Compra.objects.all()
+            response_data = []
+            
+            paginator = PageNumberPagination()
+
+            for compra in compras:
+                contas_pagar = ContaPagar.objects.filter(IdCompra=compra.IdCompra)
+                contas_pagar_serializer = ContaPagarSerializer(contas_pagar, many=True)
+                compra_serializer = CompraContaSerializer(compra)
+
+                response_data.append({
+                    "compra": compra_serializer.data,
+                    "parcelas": contas_pagar_serializer.data
+                })
+
+            paginated_response_data = paginator.paginate_queryset(response_data, request)
+            return paginator.get_paginated_response(paginated_response_data)
         
     class ContaPagarCreateAPIView(generics.CreateAPIView):
         queryset =  ContaPagar.objects.all()
