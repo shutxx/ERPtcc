@@ -55,7 +55,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"NomePessoa\": \"testee sergio\",\r\n        \"CPF\": \"967.802.610-41\",\r\n        \"NomeRua\": \"belo horizonte\",\r\n        \"Numero\": \"170\",\r\n        \"NomeBairro\": \"zona 2\",\r\n        \"Email\": \"shuttxx09@gmail.com\",\r\n        \"Telefone\": \"(44)99812-5151\"\r\n}",
+							"raw": " {\r\n        \"NomePessoa\": \"Eduardo Moreira\",\r\n        \"CPFouCNPJ\": \"40.342.677/0001-22\",\r\n        \"NomeRua\": \"Avenida Faria Lima\",\r\n        \"Numero\": \"2000\",\r\n        \"NomeBairro\": \"Itaim Bibi\",\r\n        \"Email\": \"eduardo.moreira@example.com\",\r\n        \"Telefone\": \"(11)95566-7788\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -96,7 +96,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cliente/detail/1",
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/detail/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -110,7 +110,7 @@
 								"v1",
 								"cliente",
 								"detail",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -129,7 +129,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cliente/delete/3",
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/delete/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -143,7 +143,7 @@
 								"v1",
 								"cliente",
 								"delete",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -162,7 +162,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"NomePessoa\": \"teste allan sergio\",\r\n    \"CPF\": \"967.802.610-41\",\r\n    \"NomeRua\": \"rua belo horizonte\",\r\n    \"Numero\": \"170\",\r\n    \"NomeBairro\": \"zona 2\",\r\n    \"Email\": \"shuttxx09@gmail.com\",\r\n    \"Telefone\": \"(44)99812-5151\"\r\n}",
+							"raw": "{\r\n    \"NomePessoa\": \"Gabriela Dias\",\r\n    \"CPFouCNPJ\": \"85.493.919/0001-17\",\r\n    \"NomeRua\": \"Avenida das Nações Unidas\",\r\n    \"Numero\": \"150\",\r\n    \"NomeBairro\": \"Brooklin\",\r\n    \"Email\": \"gabriela.Dias@example.com\",\r\n    \"Telefone\": \"(11)91098-7654\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -170,7 +170,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cliente/update/2",
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/update/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -184,7 +184,7 @@
 								"v1",
 								"cliente",
 								"update",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -227,7 +227,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"DataCompra\": \"2024-04-17\",\r\n    \"ValorTotal\": 150.00,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"mouse\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        },\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"teclado\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
+							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"DataCompra\": \"2024-08-22\",\r\n    \"ValorTotal\": 123199.78,\r\n    \"FormaPagamento\": \"A Prazo\",\r\n    \"Prazo\": \"10,20,30,40\",\r\n    \"Parcelas\": 4,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"Câmera GoPro HERO9\",\r\n            \"ValorUnitario\": 2599.99,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 57199.78\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S21\",\r\n            \"ValorUnitario\": 4199.9,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 66000.00\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -261,7 +261,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/compra/detail/3",
+							"raw": "http://127.0.0.1:8000/api/v1/compra/detail/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -275,7 +275,7 @@
 								"v1",
 								"compra",
 								"detail",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -314,7 +314,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"DataCompra\": \"2024-04-17\",\r\n    \"ValorTotal\": 150.00,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"monitor\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        },\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"processador\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 3000.0\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"DataCompra\": \"2024-04-17\",\r\n    \"ValorTotal\": 150.00,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10,20\",\r\n    \"Parcelas\": 2,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"mouse\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 11500.0\r\n        },\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"teclado\",\r\n            \"ValorUnitario\": 2,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 11500.0\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -379,7 +379,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdFornecedor\": 1,\r\n    \"Valor\": \"1500.00\",\r\n    \"DataVencimento\": \"2024-04-17\",\r\n    \"DataPagamento\": \"2024-04-17\",\r\n    \"Pago\": true\r\n}",
+							"raw": "{\r\n    \"IdCompra\": 1,\r\n    \"Valor\": \"1500.00\",\r\n    \"DataVencimento\": \"2024-04-17\",\r\n    \"DataPagamento\": \"2024-04-17\",\r\n    \"Pago\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -683,7 +683,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"NomeFantasia\": \"dela torre\",\r\n    \"NomeJuridico\": \"dela torre condimentos\",\r\n    \"Email\": \"delatorre@gmail.com\",\r\n    \"Telefone\": \"(44)30300-4545\",\r\n    \"CNPJ\": \"43.704.898/0001-91\",\r\n    \"NomeRua\": \"belo horizonte\",\r\n    \"Numero\": \"246\",\r\n    \"NomeBairro\": \"adelino paggani\"\r\n}",
+							"raw": "{\r\n        \"NomeFantasia\": \"Techno Sound\",\r\n        \"NomeJuridico\": \"Techno Sound Equipamentos Eletrônicos Ltda.\",\r\n        \"Email\": \"suporte@technosound.com.br\",\r\n        \"Telefone\": \"(11)90123-4567\",\r\n        \"CNPJ\": \"50.137.240/0001-00\",\r\n        \"NomeRua\": \"Avenida do Som\",\r\n        \"Numero\": \"950\",\r\n        \"NomeBairro\": \"Eletrônico\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -743,7 +743,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/delete/2",
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/delete/11",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -757,7 +757,7 @@
 								"v1",
 								"fornecedor",
 								"delete",
-								"2"
+								"11"
 							]
 						}
 					},
@@ -770,7 +770,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"NomeFantasia\": \"de la torre\",\r\n    \"NomeJuridico\": \"dela torre condimentos ltda\",\r\n    \"Email\": \"delatorre@gmail.com\",\r\n    \"Telefone\": \"4440028922\",\r\n    \"CNPJ\": \"88.206.469/0001-22\",\r\n    \"NomeRua\": \"belo horizonte\",\r\n    \"Numero\": \"246\",\r\n    \"NomeBairro\": \"adelino paggani\"\r\n}",
+							"raw": "{\r\n        \"NomeFantasia\": \"Home\",\r\n        \"NomeJuridico\": \"Home Ltda.\",\r\n        \"Email\": \"contato@home.com.br\",\r\n        \"Telefone\": \"(21)92345-6789\",\r\n        \"CNPJ\": \"09.185.969/0001-59\",\r\n        \"NomeRua\": \"Rua do Conforto\",\r\n        \"Numero\": \"800\",\r\n        \"NomeBairro\": \"Residencial\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -778,7 +778,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/update/1",
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/update/11",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -792,7 +792,7 @@
 								"v1",
 								"fornecedor",
 								"update",
-								"1"
+								"11"
 							]
 						}
 					},
@@ -835,7 +835,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"NomeProduto\": \"teste\",\r\n    \"Descricao\": \"Lorem ipsum dolor sit amet, consectetur adipiscing\\n elit. Vestibulum vehicula erat sed accumsan gravi\\nda. Proin quis interdum quam, sit amet aliquam sem\\n. Phasellus sodales scelerisque porta.\",\r\n    \"Preco\": 19.5,\r\n    \"UnidMedida\": \"un\",\r\n    \"Estoque\": 12\r\n}",
+							"raw": "{\r\n        \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n        \"Descricao\": \"Câmera mirrorless com sensor APS-C, gravação em 4K, foco automático rápido, e tela LCD articulada.\",\r\n        \"Preco\": 6499.00,\r\n        \"UnidMedida\": \"Unidade\",\r\n        \"Estoque\": 22\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -930,7 +930,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/produto/update/1",
+							"raw": "http://127.0.0.1:8000/api/v1/produto/update/6",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -944,7 +944,7 @@
 								"v1",
 								"produto",
 								"update",
-								"1"
+								"6"
 							]
 						}
 					},
@@ -1198,7 +1198,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdCliente\": 1,\r\n    \"DataVenda\": \"2024-08-07\",\r\n    \"TotalVenda\": 150.0,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10,20\",\r\n    \"Parcelas\": 2,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdItensVenda\": 1,\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"mouse\",\r\n            \"ValorUnitario\": 1500.0,\r\n            \"ValorTotal\": 3000.0\r\n        },\r\n        {\r\n            \"IdItensVenda\": 2,\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"teclado\",\r\n            \"ValorUnitario\": 1500.0,\r\n            \"ValorTotal\": 3000.0\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
+							"raw": "{\r\n    \"IdCliente\": 1,\r\n    \"DataVenda\": \"2024-08-22\",\r\n    \"TotalVenda\": 13599.78,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10,20\",\r\n    \"Parcelas\": 2,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"Câmera GoPro HERO9\",\r\n            \"ValorUnitario\": 2599.99,\r\n            \"ValorTotal\": 5199.98\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"QtdProduto\": 2,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S21\",\r\n            \"ValorUnitario\": 4199.9,\r\n            \"ValorTotal\": 8399.8\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
