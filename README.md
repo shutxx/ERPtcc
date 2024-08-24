@@ -13,3 +13,8 @@
 ### Aplique as migrações do banco de dados 
 - **Pare o servidor e aplique:** `python manage.py migrate`
 - **Servidor vai subir em:** `http://127.0.0.1:8000/`
+
+### Rodando os Testes 
+- **Pare rodar os teste:** `python manage.py test`
+- **Pare saber a cobertura dos testes:** `coverage run manage.py test`
+- **O coverage pode gerar uma interface HTML para visualização:** `coverage html`
