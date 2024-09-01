@@ -19,6 +19,8 @@ class ItensCompraSerializer(serializers.ModelSerializer):
         ]
 
 class CompraContaSerializer(serializers.ModelSerializer):
+    IdFornecedor = FornecedorSerializer(read_only=True)
+    
     class Meta:
         model = Compra
         fields = [
@@ -27,7 +29,8 @@ class CompraContaSerializer(serializers.ModelSerializer):
             'ValorTotal',
             'FormaPagamento',
             'Prazo',
-            'Parcelas'
+            'Parcelas',
+            'IdFornecedor'
         ]
 
 class CompraSerializer(serializers.ModelSerializer):
