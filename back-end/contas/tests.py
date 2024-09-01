@@ -101,5 +101,6 @@ class ContaPagarAPITestCase(APITestCase):
         """Testar o endpoint GET /conta-pagar/detail/<int:pk>"""
         response = self.client.get(self.url_detail)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEquals(response.data['IdContaPagar'], 1)
-        print(f"{Cores.VERDE}Teste para endpoint GET /conta-pagar/detail/<int:pk> concluído com sucesso.{Cores.RESET}")
+        self.assertEqual(response.data['IdContaPagar'], 1)
+        self.assertEqual(response.data['Status'], True)
+        print(f"{Cores.VERDE}Teste para endpoint GET /conta-pagar-detail/<int:pk> concluído com sucesso.{Cores.RESET}")
