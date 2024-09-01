@@ -84,10 +84,11 @@ class ContaPagarAPITestCase(APITestCase):
         )
 
         self.url_list = reverse('conta-pagar-list')
-        self.url_create = reverse('conta-create')
-        self.url_detail = reverse('conta-detail', args=[self.contaPagar.IdContaPagar])
-        self.url_update = reverse('conta-update', args=[self.contaPagar.IdContaPagar])
-        self.url_delete = reverse('conta-delete', args=[self.contaPagar.IdContaPagar])
+        self.url_create = reverse('conta-pagar-create')
+        self.url_detail = reverse('conta-pagar-detail', args=[self.contaPagar.IdContaPagar])
+        self.url_update = reverse('conta-pagar-update', args=[self.contaPagar.IdContaPagar])
+        self.url_delete = reverse('conta-pagar-delete', args=[self.contaPagar.IdContaPagar])
+
 
     def test_get_conta_pagar_list(self):
         """Testar o endpoint GET /contas-pagar/"""
@@ -95,3 +96,10 @@ class ContaPagarAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.data), 1)
         print(f"{Cores.VERDE}Teste para endpoint GET /contas-pagar/ concluído com sucesso.{Cores.RESET}")
+
+    def test_get_conta_pagar_details(self):
+        """Testar o endpoint GET /conta-pagar/detail/<int:pk>"""
+        response = self.client.get(self.url_detail)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEquals(response.data['IdContaPagar'], 1)
+        print(f"{Cores.VERDE}Teste para endpoint GET /conta-pagar/detail/<int:pk> concluído com sucesso.{Cores.RESET}")
