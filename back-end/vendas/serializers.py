@@ -19,6 +19,8 @@ class ItensVendaSerializer(serializers.ModelSerializer):
         ]
 
 class VendaContaSerializer(serializers.ModelSerializer):
+    IdCliente = ClienteSerializer(read_only=True)
+    
     class Meta:
         model = Venda
         fields = [
@@ -27,7 +29,8 @@ class VendaContaSerializer(serializers.ModelSerializer):
             'TotalVenda',
             'FormaPagamento',
             'Prazo',
-            'Parcelas'
+            'IdCliente',
+            'Parcelas',
         ] 
 
 class VendaSerializer(serializers.ModelSerializer):
