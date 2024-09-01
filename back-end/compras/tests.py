@@ -19,14 +19,20 @@ class CompraAPITestCase(APITestCase):
     def setUp(self):
         self.produto1 = Produto.objects.create(
             NomeProduto="Câmera GoPro HERO9",
-            Descricao="Câmera de ação à prova d'água com resolução 5K, gravação em 60fps, estabilização HyperSmooth 3.0, até 30 metros de profundidade.",
+            Descricao=("Câmera de ação à prova d'água com resolução 5K, "
+                       "gravação em 60fps, "
+                       "estabilização HyperSmooth 3.0, "
+                       "até 30 metros de profundidade."),
             Preco=2599.99,
             UnidMedida="Unidade",
             Estoque=40
         )
         self.produto2 = Produto.objects.create(
             NomeProduto="Smartphone Samsung Galaxy S21",
-            Descricao="Smartphone com tela AMOLED de 6.2 polegadas, processador Exynos 2100, 8GB de RAM, 128GB de armazenamento, câmera tripla de 64MP.",
+            Descricao=("Smartphone com tela AMOLED de 6.2 polegadas, "
+                       "processador Exynos 2100, 8GB de RAM, "
+                       "128GB de armazenamento, "
+                       "câmera tripla de 64MP."),
             Preco=4199.90,
             UnidMedida="Unidade",
             Estoque=30
