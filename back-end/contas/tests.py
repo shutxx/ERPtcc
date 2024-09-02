@@ -89,18 +89,63 @@ class ContaPagarAPITestCase(APITestCase):
         self.url_update = reverse('conta-pagar-update', args=[self.contaPagar.IdContaPagar])
         self.url_delete = reverse('conta-pagar-delete', args=[self.contaPagar.IdContaPagar])
 
+        self.MsgTest = ' '
 
     def test_get_conta_pagar_list(self):
-        """Testar o endpoint GET /contas-pagar/"""
+        self.MsgTest = 'Teste do endpoint GET /contas-pagar/'
+        print(self.MsgTest)
         response = self.client.get(self.url_list)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.data), 1)
-        print(f"{Cores.VERDE}Teste para endpoint GET /contas-pagar/ concluído com sucesso.{Cores.RESET}")
+        print(f".{Cores.VERDE}Teste do endpoint GET /contas-pagar/ concluído com sucesso.{Cores.RESET}")
 
     def test_get_conta_pagar_details(self):
-        """Testar o endpoint GET /conta-pagar/detail/<int:pk>"""
+        self.MsgTest = 'Teste do endpoint GET /conta-pagar/detail/<int:pk>'
+        print(self.MsgTest)
         response = self.client.get(self.url_detail)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['IdContaPagar'], 1)
         self.assertEqual(response.data['Status'], True)
-        print(f"{Cores.VERDE}Teste para endpoint GET /conta-pagar-detail/<int:pk> concluído com sucesso.{Cores.RESET}")
+        print(f".{Cores.VERDE}Teste do endpoint GET /conta-pagar-detail/<int:pk> concluído com sucesso.{Cores.RESET}")
+
+    def test_post_conta_pagar(self):
+        self.MsgTest = 'Teste do endpoint POST /conta-pagar-create/'
+        print(self.MsgTest)
+        data = {
+            "IdCompra": 1,
+            "Valor": 1500.00,
+            "DataVencimento": "2024-04-17",
+            "DataEntrada": "2024-04-17",
+            "Status": "True"
+        }
+        response = self.client.post(self.url_create, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['IdContaPagar'], 2)
+        print(f".{Cores.VERDE}Teste do endpoint POST /conta-pagar-create/ concluído com sucesso.{Cores.RESET}")
+
+    def test_put_conta_pagar(self):
+        self.MsgTest = 'Teste do endpoint PUT /conta-pagar-update/<int:pk>'
+        print(self.MsgTest)
+        data = {
+            "IdCompra": 1,
+            "Valor": 500.00,
+            "DataVencimento": "2024-04-17",
+            "DataEntrada": "2024-04-01",
+            "Status": "False"
+        }
+        response = self.client.put(self.url_update, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.contaPagar.refresh_from_db()
+        self.assertEqual(response.data['IdContaPagar'], 1)
+        self.assertEqual(response.data['Valor'], '500.00')
+        self.assertEqual(response.data['DataEntrada'], '2024-04-01')
+        self.assertEqual(response.data['Status'], False)
+        print(f".{Cores.VERDE}Teste do endpoint PUT /conta-pagar-update/ concluído com sucesso.{Cores.RESET}")
+
+    def test_delete_conta_pagar(self):
+        self.MsgTest = 'Teste do endpoint DELETE /conta-pagar-delete/<int:pk>'
+        print(self.MsgTest)
+        response = self.client.delete(self.url_delete)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(ContaPagar.objects.count(), 0)
+        print(f".{Cores.VERDE}Teste do endpoint DELETE /conta-pagar-delete/ concluído com sucesso.{Cores.RESET}")
