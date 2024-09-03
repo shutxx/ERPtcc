@@ -12,6 +12,7 @@
 
 ### Aplique as migrações do banco de dados 
 - **Pare o servidor e aplique:** `python manage.py migrate`
+- **Para gerar alguns dados fictícios:** `python manage.py loaddata initial_data.json`
 - **Servidor vai subir em:** `http://127.0.0.1:8000/`
 
 ### Rodando os Testes 

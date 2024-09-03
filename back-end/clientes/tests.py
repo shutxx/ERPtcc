@@ -43,15 +43,15 @@ class ClienteAPITestCase(APITestCase):
         print(f".{Cores.VERDE}Teste do endpoint GET /clientes/ concluído com sucesso.{Cores.RESET}")
 
     def test_get_cliente_detail(self):
-        self.MsgTest = 'Teste do endpoint GET /cliente/detail/<int:pk>'
+        self.MsgTest = 'Teste do endpoint GET /cliente-detail/<int:pk>'
         print(self.MsgTest)
         response = self.client.get(self.url_detail)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['NomePessoa'], "João Silva")
-        print(f".{Cores.VERDE}Teste do endpoint GET /cliente/detail/<int:pk> concluído com sucesso.{Cores.RESET}")
+        print(f".{Cores.VERDE}Teste do endpoint GET /cliente-detail/<int:pk> concluído com sucesso.{Cores.RESET}")
 
     def test_post_cliente(self):
-        self.MsgTest = 'Teste do endpoint POST /cliente/create/'
+        self.MsgTest = 'Teste do endpoint POST /cliente-create/'
         print(self.MsgTest)
         data = {
             "NomePessoa": "Maria Oliveira",
@@ -65,10 +65,10 @@ class ClienteAPITestCase(APITestCase):
         response = self.client.post(self.url_create, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Cliente.objects.count(), 2)
-        print(f".{Cores.VERDE}Teste do endpoint POST /cliente/create/ concluído com sucesso.{Cores.RESET}")
+        print(f".{Cores.VERDE}Teste do endpoint POST /cliente-create/ concluído com sucesso.{Cores.RESET}")
 
     def test_update_cliente(self):
-        self.MsgTest = 'Teste do endpoint PUT /cliente/update/<int:pk>'
+        self.MsgTest = 'Teste do endpoint PUT /cliente-update/<int:pk>'
         print(self.MsgTest)
         data = {
             "NomePessoa": "João Atualizado",
@@ -83,12 +83,12 @@ class ClienteAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.cliente.refresh_from_db()
         self.assertEqual(self.cliente.NomePessoa, "João Atualizado")
-        print(f".{Cores.VERDE}Teste do endpoint PUT /cliente/update/<int:pk> concluído com sucesso.{Cores.RESET}")
+        print(f".{Cores.VERDE}Teste do endpoint PUT /cliente-update/<int:pk> concluído com sucesso.{Cores.RESET}")
 
     def test_delete_cliente(self):
-        self.MsgTest = 'Teste do endpoint DELETE /cliente/delete/<int:pk>'
+        self.MsgTest = 'Teste do endpoint DELETE /cliente-delete/<int:pk>'
         print(self.MsgTest)
         response = self.client.delete(self.url_delete)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Cliente.objects.count(), 0)
-        print(F".{Cores.VERDE}Teste do endpoint DELETE /cliente/delete/<int:pk> concluído com sucesso.{Cores.RESET}")
+        print(F".{Cores.VERDE}Teste do endpoint DELETE /cliente-delete/<int:pk> concluído com sucesso.{Cores.RESET}")
