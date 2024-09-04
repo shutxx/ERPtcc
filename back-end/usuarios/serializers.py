@@ -8,8 +8,23 @@ class TokenSerializer(serializers.ModelSerializer):
         model = Token
         fields = [
             'key',
-            'created',
-            'user_id',
+            'created'
+        ]
+
+class UsuarioTokenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'id', 
+            'last_login', 
+            'is_superuser', 
+            'username', 
+            'last_name', 
+            'email', 
+            'is_staff', 
+            'is_active', 
+            'date_joined', 
+            'first_name',
         ]
 
 class UsuarioSerializer(serializers.ModelSerializer):
@@ -28,3 +43,14 @@ class UsuarioSerializer(serializers.ModelSerializer):
             'date_joined', 
             'first_name',
         ]
+
+    def create(self, validated_data):
+        user = User(
+            username=validated_data['username'],
+            email=validated_data.get('email', ''),
+            first_name=validated_data.get('first_name', ''),
+            last_name=validated_data.get('last_name', '')
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
