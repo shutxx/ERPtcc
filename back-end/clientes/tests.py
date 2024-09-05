@@ -4,6 +4,9 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import Cliente
 
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+
 class Cores:
     RESET = "\033[0m"
     VERMELHO = "\033[31m"
@@ -17,6 +20,11 @@ class Cores:
 class ClienteAPITestCase(APITestCase):
     
     def setUp(self):
+
+        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.token = Token.objects.create(user=self.user)
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+
         self.cliente = Cliente.objects.create(
             NomePessoa="João Silva",
             CPFouCNPJ="123.456.789-00",
@@ -24,7 +32,7 @@ class ClienteAPITestCase(APITestCase):
             Numero="123",
             NomeBairro="Centro",
             Email="joao.silva@example.com",
-            Telefone="(11) 98765-4321"
+            Telefone="(11)98765-4321"
         )
         self.url_list = reverse('clientes-list')
         self.url_create = reverse('cliente-create')
