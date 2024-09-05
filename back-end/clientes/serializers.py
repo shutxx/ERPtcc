@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Cliente
-from .utils import valida_cpf, validar_cnpj
+from utils.util import valida_cnpj, valida_Telefone, valida_cpf
 import re
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -20,7 +20,7 @@ class ClienteSerializer(serializers.ModelSerializer):
     def validate_CPFouCNPJ(self, documento):
         if valida_cpf(documento):
             is_valid = True
-        elif validar_cnpj(documento):
+        elif valida_cnpj(documento):
             is_valid = True
         else:
             raise serializers.ValidationError('CPF ou CNPJ inválido.')
@@ -31,6 +31,8 @@ class ClienteSerializer(serializers.ModelSerializer):
         return documento
     
     def validate_Telefone(self, telefone):
-        if not re.match(r'^\(?(\d{2})\)? ?\d{4,5}-\d{4}$', telefone):
+        telefone = telefone.strip()
+        if valida_Telefone(telefone):
+            return True
+        else:
             raise serializers.ValidationError('Telefone inválido.')
-        return telefone

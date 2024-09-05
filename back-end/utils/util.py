@@ -1,3 +1,6 @@
+from rest_framework import serializers
+import re
+
 def valida_cpf(cpf):
     cpf = ''.join(filter(str.isdigit, cpf))
     if len(cpf) != 11:
@@ -13,7 +16,7 @@ def valida_cpf(cpf):
     
     return cpf[-2:] == str(digito_1) + str(digito_2)
 
-def validar_cnpj(cnpj):
+def valida_cnpj(cnpj):
     cnpj = ''.join(filter(str.isdigit, cnpj))
     if len(cnpj) != 14:
         return False
@@ -41,3 +44,7 @@ def validar_cnpj(cnpj):
         digito2 = 0
 
     return int(cnpj[12]) == digito1 and int(cnpj[13]) == digito2
+
+def valida_Telefone(telefone):
+    pattern = r'^\(\d{2}\)\d{5}-\d{4}$'
+    return bool(re.match(pattern, telefone))
