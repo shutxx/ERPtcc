@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from .models import Fornecedor
 from fornecedores.serializers import FornecedorSerializer
 from contas.models import ContaPagar
+from produtos.models import Produto
 
 class ItensCompraSerializer(serializers.ModelSerializer):
     class Meta:
@@ -72,7 +73,13 @@ class CompraSerializer(serializers.ModelSerializer):
 
         compra = Compra.objects.create(IdFornecedor=fornecedor, **validated_data)
         for item_data in itens_compra_data:
-            ItensCompra.objects.create(IdCompra=compra, **item_data)
+            item = ItensCompra.objects.create(IdCompra=compra, **item_data)
+
+            produto_id = item.IdProduto.IdProduto
+            quantidade = item.QtdProduto
+
+            qtd = Produto.objects.get(IdProduto=produto_id)
+            qtd.adicionar_quantidade(quantidade)
 
         contador_parcela = 1
         for dias in prazo:

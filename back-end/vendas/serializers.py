@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from clientes.models import Cliente
 from clientes.serializers import ClienteSerializer
 from contas.models import ContaReceber
+from produtos.models import Produto
 
 class ItensVendaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -72,7 +73,14 @@ class VendaSerializer(serializers.ModelSerializer):
         
         venda = Venda.objects.create(IdCliente=cliente, **validated_data)
         for item_data in itens_venda_data:
-            ItensVenda.objects.create(IdVenda=venda, **item_data)
+            item = ItensVenda.objects.create(IdVenda=venda, **item_data)
+
+            nome = item.NomeProduto
+            produto_id = item.IdProduto.IdProduto
+            quantidade = item.QtdProduto
+
+            qtd = Produto.objects.get(IdProduto=produto_id)
+            qtd.remover_quantidade(nome , quantidade)
 
         contador_parcela = 1
         for dias in prazo:
