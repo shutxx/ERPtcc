@@ -33,6 +33,6 @@ class ClienteSerializer(serializers.ModelSerializer):
     def validate_Telefone(self, telefone):
         telefone = telefone.strip()
         if valida_Telefone(telefone):
-            return True
+            return telefone
         else:
             raise serializers.ValidationError('Telefone inválido.')
