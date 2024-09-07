@@ -24,6 +24,14 @@ class UsuarioLoginView(ObtainAuthToken):
             'user': user_serializer.data,
             'token': TokenSerializer(token).data,
         })
+
+class UsuarioTokenListAPIView(generics.ListAPIView):
+    queryset = Token.objects.all()
+    serializer_class = TokenSerializer
+
+class UsuarioLogoutView(generics.DestroyAPIView):
+    queryset = Token.objects.all()
+    serializer_class = TokenSerializer
         
 class UsuarioListAPIView(generics.ListAPIView):
     queryset = User.objects.all()
@@ -33,10 +41,6 @@ class UsuarioCreateAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UsuarioSerializer
 
-class UsuarioTokenListAPIView(generics.ListAPIView):
-    queryset = Token.objects.all()
-    serializer_class = TokenSerializer
-
-class UsuarioLogoutView(generics.DestroyAPIView):
-    queryset = Token.objects.all()
-    serializer_class = TokenSerializer
+class UsuarioRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UsuarioSerializer
