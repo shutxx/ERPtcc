@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import TokenSerializer, UsuarioSerializer, UsuarioTokenSerializer
@@ -30,8 +31,11 @@ class UsuarioTokenListAPIView(generics.ListAPIView):
     serializer_class = TokenSerializer
 
 class UsuarioLogoutView(generics.DestroyAPIView):
-    queryset = Token.objects.all()
-    serializer_class = TokenSerializer
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, *args, **kwargs):
+        request.user.auth_token.delete()
+        return Response(status=204)
         
 class UsuarioListAPIView(generics.ListAPIView):
     queryset = User.objects.all()

@@ -34,12 +34,12 @@ class ProdutoAPITestCase(APITestCase):
         self.MsgTest = ''
 
     def test_get_produto_list(self):
-        self.MsgTest = 'Teste do endpoint GET /produtos-list/'
+        self.MsgTest = 'Teste do endpoint GET /produtos/'
         print(self.MsgTest)
         response = self.client.get(self.url_list)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.data), 2)
-        print(f".{Cores.VERDE}Teste do endpoint GET /produtos-list/ concluído com sucesso.{Cores.RESET}")
+        print(f".{Cores.VERDE}Teste do endpoint GET /produtos/ concluído com sucesso.{Cores.RESET}")
 
     def test_get_produto_detail(self):
         self.MsgTest = 'Teste do endpoint GET /produto-detail/<int:pk>'

@@ -88,6 +88,8 @@ class CompraAPITestCase(APITestCase):
         print(self.MsgTest)
         response = self.client.get(self.url_list)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        itens_compra = response.data['results'][0]['itens_compra']
+        self.assertGreaterEqual(len(itens_compra), 2)
         self.assertGreaterEqual(len(response.data), 1)
         print(f".{Cores.VERDE}Teste do endpoint GET /compras/ concluído com sucesso.{Cores.RESET}")
 
@@ -100,7 +102,7 @@ class CompraAPITestCase(APITestCase):
         self.assertGreaterEqual(len(response.data['itens_compra']), 2)
         print(f".{Cores.VERDE}Teste do endpoint GET /compra-detail/<int:pk> concluído com sucesso.{Cores.RESET}")
 
-    def test_post_compras(self):
+    def test_post_compra(self):
         self.MsgTest = 'Teste do endpoint POST /compra-create/'
         print(self.MsgTest)
         data = {
@@ -166,12 +168,12 @@ class CompraAPITestCase(APITestCase):
         self.assertEqual(self.compra.FormaPagamento, "Avista")
         self.assertEqual(self.compra.Prazo, "10,20,30")
         self.assertEqual(self.compra.Parcelas, 3)
+        self.assertEqual(self.compra.IdCompra, 1)
         print(f".{Cores.VERDE}Teste do endpoint PUT /compra-update/ concluído com sucesso.{Cores.RESET}")
         
     def test_delete_compra(self):
         self.MsgTest = 'Teste do endpoint DELETE /compra-delete/<int:pk>'
         print(self.MsgTest)
-        """Testa o endpoint DELETE /compra/delete/<int:pk>"""
         response = self.client.delete(self.url_delete)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Compra.objects.count(), 0)
