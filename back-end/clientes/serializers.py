@@ -14,7 +14,8 @@ class ClienteSerializer(serializers.ModelSerializer):
             'CPFouCNPJ',
             'NomeRua',
             'Numero',
-            'NomeBairro'
+            'NomeBairro',
+            'Cidade'
         ]
 
     def validate_CPFouCNPJ(self, documento):
