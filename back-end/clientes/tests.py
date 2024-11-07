@@ -32,7 +32,8 @@ class ClienteCPFAPITestCase(APITestCase):
             Numero="123",
             NomeBairro="Centro",
             Email="joao.silva@example.com",
-            Telefone="(11)98765-4321"
+            Telefone="(11)98765-4321",
+            Cidade="Cianorte"
         )
         self.url_list = reverse('clientes-list')
         self.url_create = reverse('cliente-create')
@@ -68,7 +69,8 @@ class ClienteCPFAPITestCase(APITestCase):
             "Numero": "456",
             "NomeBairro": "Jardim América",
             "Email": "maria.oliveira@example.com",
-            "Telefone": "(21)12345-6789"
+            "Telefone": "(21)12345-6789",
+            "Cidade": "Cianorte"
         }
         response = self.client.post(self.url_create, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -85,12 +87,14 @@ class ClienteCPFAPITestCase(APITestCase):
             "Numero": "123",
             "NomeBairro": "Centro",
             "Email": "joao.silva@example.com",
-            "Telefone": "(11)98765-4321"
+            "Telefone": "(11)98765-4321",
+            "Cidade": "Maringa"
         }
         response = self.client.put(self.url_update, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.cliente.refresh_from_db()
         self.assertEqual(self.cliente.NomePessoa, "João Atualizado")
+        self.assertEqual(self.cliente.Cidade, "Maringa")
         print(f".{Cores.VERDE}Teste do endpoint PUT /cliente-update/<int:pk> concluído com sucesso.{Cores.RESET}")
 
     def test_delete_clienteCPF(self):
@@ -116,7 +120,8 @@ class ClienteCNPJAPITestCase(APITestCase):
             Numero="123",
             NomeBairro="Centro",
             Email="joao.silva@example.com",
-            Telefone="(11)98765-4321"
+            Telefone="(11)98765-4321",
+            Cidade="Cianorte"
         )
         self.url_list = reverse('clientes-list')
         self.url_create = reverse('cliente-create')
@@ -152,7 +157,8 @@ class ClienteCNPJAPITestCase(APITestCase):
             "Numero": "456",
             "NomeBairro": "Jardim América",
             "Email": "maria.oliveira@example.com",
-            "Telefone": "(21)12345-6789"
+            "Telefone": "(21)12345-6789",
+            "Cidade": "Maringa"
         }
         response = self.client.post(self.url_create, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -169,12 +175,14 @@ class ClienteCNPJAPITestCase(APITestCase):
             "Numero": "123",
             "NomeBairro": "Centro",
             "Email": "joao.silva@example.com",
-            "Telefone": "(11)98765-4321"
+            "Telefone": "(11)98765-4321",
+            "Cidade": "Cianorte"
         }
         response = self.client.put(self.url_update, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.cliente.refresh_from_db()
         self.assertEqual(self.cliente.NomePessoa, "João Atualizado")
+        self.assertEqual(self.cliente.Cidade, "Cianorte")
         print(f".{Cores.VERDE}Teste do endpoint PUT /cliente-update/<int:pk> concluído com sucesso.{Cores.RESET}")
 
     def test_delete_clienteCnpj(self):
