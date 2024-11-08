@@ -1,5 +1,4 @@
 from rest_framework import generics
-from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Cliente
 from .serializers import ClienteSerializer
@@ -32,7 +31,7 @@ class ClienteUpdateAPIView(generics.UpdateAPIView):
     serializer_class = ClienteSerializer
     # permission_classes = [permissions.IsAuthenticated]
 
-class ClienteSeachAPIView(APIView):
+class ClienteSearchAPIView(APIView):
     def get(self, request, *args, **kwargs):
         query = request.query_params.get('query', None)
     
