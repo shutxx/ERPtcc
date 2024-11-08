@@ -98,7 +98,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cliente/search/?query=ana",
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/search/?query=Marcos",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -117,7 +117,7 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "ana"
+									"value": "Marcos"
 								}
 							]
 						}
@@ -138,7 +138,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n    \"NomePessoa\": \"Eduardo Moreira\",\r\n    \"CPFouCNPJ\": \"02.881.638/0001-04\",\r\n    \"NomeRua\": \"Avenida Faria Lima\",\r\n    \"Numero\": \"2000\",\r\n    \"NomeBairro\": \"Itaim Bibi\",\r\n    \"Email\": \"eduardo.moreira@example.com\",\r\n    \"Telefone\": \"(11)95566-7780\"\r\n}",
+							"raw": " {\r\n    \"NomePessoa\": \"Marcos Aurelio\",\r\n    \"CPFouCNPJ\": \"711.371.500-17\",\r\n    \"Cidade\": \"São Paulo\",\r\n    \"NomeRua\": \"Avenida Faria Lima\",\r\n    \"Numero\": \"2000\",\r\n    \"NomeBairro\": \"Itaim Bibi\",\r\n    \"Email\": \"eduardo.moreira@example.com\",\r\n    \"Telefone\": \"(11)95566-7780\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -280,6 +280,31 @@
 			"item": [
 				{
 					"name": "compras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/compras/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"compras",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "compras Copy",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -760,6 +785,38 @@
 					"response": []
 				},
 				{
+					"name": "fornecedores search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/search/?query=T",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"fornecedor",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "T"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "criar fornecedor",
 					"request": {
 						"method": "POST",
@@ -906,6 +963,38 @@
 								"v1",
 								"produtos",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produtos search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/produto/search/?query=note",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "note"
+								}
 							]
 						}
 					},
