@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Vendas</title>
+
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .venda {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cliente {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-size: 1.1em;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Relatório de Vendas</h1>
+
+    {% for venda in vendas %}
+    <div class="venda">
+        <h2>Venda #{{ venda.IdVenda }} - Data: {{ venda.DataVenda }}</h2>
+
+        <!-- Informações do cliente -->
+        <div class="cliente">
+            <strong>Cliente:</strong> {{ venda.IdCliente.NomePessoa }}<br>
+            <strong>Email:</strong> {{ venda.IdCliente.Email }}<br>
+            <strong>Telefone:</strong> {{ venda.IdCliente.Telefone }}<br>
+            <strong>Endereço:</strong> {{ venda.IdCliente.NomeRua }}, {{ venda.IdCliente.Numero }} - {{ venda.IdCliente.NomeBairro }}, {{ venda.IdCliente.Cidade }}<br>
+            <strong>CPF/CNPJ:</strong> {{ venda.IdCliente.CPFouCNPJ }}
+        </div>
+
+        <!-- Itens da venda -->
+        <h3>Itens da Venda</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor Unitário</th>
+                    <th>Valor Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in venda.itens_venda.all %}
+                <tr>
+                    <td>{{ item.NomeProduto }}</td>
+                    <td>{{ item.QtdProduto }}</td>
+                    <td>R$ {{ item.ValorUnitario|floatformat:2 }}</td>
+                    <td>R$ {{ item.ValorTotal|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Resumo da venda -->
+        <div>
+            <strong>Total da Venda:</strong> R$ {{ venda.TotalVenda|floatformat:2 }}<br>
+            <strong>Forma de Pagamento:</strong> {{ venda.FormaPagamento }}<br>
+            <strong>Parcelas:</strong> {{ venda.Parcelas }} | <strong>Prazo:</strong> {{ venda.Prazo }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="footer">
+        <p>Gerado automaticamente pelo sistema.</p>
+    </div>
+
+</body>
+</html>
