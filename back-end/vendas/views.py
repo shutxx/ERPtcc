@@ -1,5 +1,6 @@
 from rest_framework import generics
 from .models import Venda
+from django.db.models import Q
 from .serializers import VendaSerializer
 from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
@@ -32,8 +33,28 @@ class VendaUpdateAPIView(generics.UpdateAPIView):
 class RelatorioView(APIView):
     def get(self, request, *args, **kwargs):
         vendas = Venda.objects.all()
-        html_content = render_to_string('relatorio.html', {'vendas': vendas})
+        html_content = render_to_string('relatorio_venda.html', {'vendas': vendas})
         response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="relatorio.pdf"'
+        response['Content-Disposition'] = 'attachment; filename="relatorio_venda.pdf"'
         pisa.CreatePDF(html_content, dest=response)
         return response
+    
+class VendaSearch(APIView):
+    def get(self, request, *args, **kwargs):
+        query = request.query_params.get('query', None)
+
+        if query:
+            vendaSeach = Venda.objects.filter(
+                Q(IdCliente__NomePessoa__icontains=query) | Q(IdCliente__CPFouCNPJ__icontains=query)
+            )
+        else:
+            vendaSeach = Venda.objects.all()
+
+        pagination_class = PageNumberPagination()
+        pagination_class.page_size = 10
+
+        result_page = pagination_class.paginate_queryset(vendaSeach, request)
+
+        serializer_class = VendaSerializer(result_page, many=True)
+
+        return pagination_class.get_paginated_response(serializer_class.data)

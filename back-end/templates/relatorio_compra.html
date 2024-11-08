@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #00838F;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .fornecedor-info, .compra-resumo {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px
+        }
+
+        .fornecedor-info strong, .compra-resumo strong {
+            color: #555;
+        }
+
+        .compra-section {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            page-break-inside: avoid;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #00838F;
+            color: white;
+            font-weight: bold;
+        }
+
+        table, tr, td, th {
+            page-break-inside: avoid;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            text-align: center;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório de Compra</h1>
+
+    {% for compra in compras %}
+    <div class="compra-section"> 
+        <h2>Compra #{{ compra.IdCompra }} - Data: {{ compra.DataCompra }}</h2>
+
+        <!-- Informações do fornecedor -->
+        <div class="fornecedor-info"> 
+            <strong>Fornecedor:</strong> {{ compra.IdFornecedor.NomeFantasia }}<br>
+            <strong>Razão Social:</strong> {{ compra.IdFornecedor.NomeJuridico }}<br>
+            <strong>Email:</strong> {{ compra.IdFornecedor.Email }}<br>
+            <strong>Telefone:</strong> {{ compra.IdFornecedor.Telefone }}<br>
+            <strong>CNPJ:</strong> {{ compra.IdFornecedor.CNPJ }}<br>
+            <strong>Endereço:</strong> {{ compra.IdFornecedor.NomeRua }}, 
+                                        {{ compra.IdFornecedor.Numero }} - 
+                                        {{ compra.IdFornecedor.NomeBairro }}<br>
+        </div>
+
+        <!-- Itens da compra -->
+        <h3>Itens da Compra</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor Unitário</th>
+                    <th>Valor Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in compra.itens_compra.all %}
+                    {% if item.NomeProduto and item.QtdProduto and item.ValorUnitario and item.ValorTotal %}
+                        <tr>
+                            <td>{{ item.NomeProduto }}</td>
+                            <td>{{ item.QtdProduto }}</td>
+                            <td>R$ {{ item.ValorUnitario|floatformat:2 }}</td>
+                            <td>R$ {{ item.ValorTotal|floatformat:2 }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Resumo da compra -->
+        <div class="compra-resumo">
+            <strong>Total da Compra:</strong> R$ {{ compra.ValorTotal|floatformat:2 }}<br>
+            <strong>Forma de Pagamento:</strong> {{ compra.FormaPagamento }}<br>
+            <strong>Parcelas:</strong> {{ compra.Parcelas }} | <strong>Prazo:</strong> {{ compra.Prazo }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="footer">
+        <p>Relatório gerado automaticamente pelo sistema.</p>
+    </div>
+</body>
+</html>

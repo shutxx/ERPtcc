@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Vendas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #00838F;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .cliente-info, .venda-resumo {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px
+        }
+
+        .cliente-info strong, .venda-resumo strong {
+            color: #555;
+        }
+
+        .venda-section {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #00838F;
+            color: white;
+            font-weight: bold;
+        }
+
+        .venda-resumo {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            text-align: center;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório de Vendas</h1>
+
+    {% for venda in vendas %}
+    <div class="venda-section"> 
+        <h2>Venda #{{ venda.IdVenda }} - Data: {{ venda.DataVenda }}</h2>
+
+        <!-- Informações do cliente -->
+        <div class="cliente-info"> 
+            <strong>Cliente:</strong> {{ venda.IdCliente.NomePessoa }}<br>
+            <strong>Email:</strong> {{ venda.IdCliente.Email }}<br>
+            <strong>Telefone:</strong> {{ venda.IdCliente.Telefone }}<br>
+            <strong>Endereço:</strong> {{ venda.IdCliente.NomeRua }}, 
+                                      {{ venda.IdCliente.Numero }} - 
+                                      {{ venda.IdCliente.NomeBairro }}, 
+                                      {{ venda.IdCliente.Cidade }}<br>
+            <strong>CPF/CNPJ:</strong> {{ venda.IdCliente.CPFouCNPJ }}
+        </div>
+
+        <!-- Itens da venda -->
+        <h3>Itens da Venda</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor Unitário</th>
+                    <th>Valor Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in venda.itens_venda.all %}
+                    {% if item.NomeProduto and item.QtdProduto and item.ValorUnitario and item.ValorTotal %}
+                    <tr>
+                        <td>{{ item.NomeProduto }}</td>
+                        <td>{{ item.QtdProduto }}</td>
+                        <td>R$ {{ item.ValorUnitario|default:"0.00"|floatformat:2 }}</td>
+                        <td>R$ {{ item.ValorTotal|default:"0.00"|floatformat:2 }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Resumo da venda -->
+        <div class="venda-resumo">
+            <strong>Total da Venda:</strong> R$ {{ venda.TotalVenda|default:"0.00"|floatformat:2 }}<br>
+            <strong>Forma de Pagamento:</strong> {{ venda.FormaPagamento|default:"Não informado" }}<br>
+            <strong>Parcelas:</strong> {{ venda.Parcelas }} | <strong>Prazo:</strong> {{ venda.Prazo }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="footer">
+        <p>Relatório gerado automaticamente pelo sistema.</p>
+    </div>
+</body>
+</html>

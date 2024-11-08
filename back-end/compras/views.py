@@ -4,6 +4,9 @@ from django.db.models import Q
 from .models import Compra
 from .serializers import CompraSerializer
 from rest_framework.pagination import PageNumberPagination
+from xhtml2pdf import pisa
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 class CompraListAPIView(generics.ListAPIView):
     queryset = Compra.objects.all()
@@ -25,6 +28,15 @@ class CompraDestroyAPIView(generics.DestroyAPIView):
 class CompraUpdateAPIView(generics.UpdateAPIView):
     queryset = Compra.objects.all()
     serializer_class = CompraSerializer
+
+class RelatorioView(APIView):
+    def get(self, request, *args, **kwargs):
+        compras = Compra.objects.all()
+        html_content = render_to_string('relatorio_compra.html', {'compras': compras})
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="relatorio_compra.pdf"'
+        pisa.CreatePDF(html_content, dest=response)
+        return response
 
 class CompraSearch(APIView):
     def get(self, request, *args, **kwargs):
