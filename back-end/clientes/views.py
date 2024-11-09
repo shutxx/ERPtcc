@@ -34,19 +34,14 @@ class ClienteUpdateAPIView(generics.UpdateAPIView):
 class ClienteSearchAPIView(APIView):
     def get(self, request, *args, **kwargs):
         query = request.query_params.get('query', None)
-    
         if query:
             clienteSeach = Cliente.objects.filter(
                 Q(NomePessoa__icontains=query) | Q(CPFouCNPJ__icontains=query)
             )
         else:
             clienteSeach = Cliente.objects.all()
-
         pagination_class = PageNumberPagination()
         pagination_class.page_size = 10
-
         result_page = pagination_class.paginate_queryset(clienteSeach, request)
-
         serializer_class = ClienteSerializer(result_page, many=True)
-
         return pagination_class.get_paginated_response(serializer_class.data)

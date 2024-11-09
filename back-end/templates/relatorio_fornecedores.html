@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Fornecedores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00838F;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #00838F;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .fornecedor-section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .fornecedor-info {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .fornecedor-info strong {
+            color: #555;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Relatório de Fornecedores</h1>
+
+    {% for fornecedor in fornecedores %}
+    <div class="fornecedor-section">
+        <h2>Fornecedor #{{ fornecedor.IdFornecedor }} - {{ fornecedor.NomeFantasia }}</h2>
+        <div class="fornecedor-info">
+            <strong>Razão Social:</strong> {{ fornecedor.NomeJuridico }}<br>
+            <strong>CNPJ:</strong> {{ fornecedor.CNPJ }}<br>
+            <strong>Email:</strong> {{ fornecedor.Email }}<br>
+            <strong>Telefone:</strong> {{ fornecedor.Telefone }}<br>
+            <strong>Endereço:</strong> {{ fornecedor.NomeRua }}, {{ fornecedor.Numero }} - {{ fornecedor.NomeBairro }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="footer">Relatório gerado automaticamente pelo sistema.</div>
+</body>
+
+</html>

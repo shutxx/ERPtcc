@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import CompraListAPIView, CompraCreateAPIView, CompraRetrieveAPIView, CompraUpdateAPIView, CompraDestroyAPIView, CompraSearch, RelatorioView
+from .views import CompraListAPIView, CompraCreateAPIView, CompraRetrieveAPIView, CompraUpdateAPIView, CompraDestroyAPIView, CompraSearch
+from relatorios.views import RelatorioCompraView
 
 urlpatterns = [
     path('compras/', CompraListAPIView.as_view(), name='compras-list'),
@@ -8,5 +9,5 @@ urlpatterns = [
     path('compra/delete/<int:pk>', CompraDestroyAPIView.as_view(), name='compra-delete'),
     path('compra/update/<int:pk>', CompraUpdateAPIView.as_view(), name='compra-update'),
     path('compra/search/', CompraSearch.as_view(), name='compra-search'),
-    path('compra/relatorio/', RelatorioView.as_view(), name='compra-relatorio')
+    path('compra/relatorio/', RelatorioCompraView.as_view(), name='compra-relatorio')
 ]

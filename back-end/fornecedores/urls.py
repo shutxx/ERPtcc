@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import FornecedorListAPIView, FornecedorCreateAPIView, FornecedorRetrieveAPIView, FornecedorDestroyAPIView, FornecedorUpdateAPIView, FornecedorSearch
+from relatorios.views import RelatorioFornecedorView
 
 urlpatterns = [
     path('fornecedores/', FornecedorListAPIView.as_view(), name='fornecedores-list'),
@@ -7,5 +8,6 @@ urlpatterns = [
     path('fornecedor/detail/<int:pk>', FornecedorRetrieveAPIView.as_view(), name='fornecedor-detail'),
     path('fornecedor/delete/<int:pk>', FornecedorDestroyAPIView.as_view(), name='fornecedor-delete'),
     path('fornecedor/update/<int:pk>', FornecedorUpdateAPIView.as_view(), name='fornecedor-update'),
-    path('fornecedor/search/', FornecedorSearch.as_view(), name='fornecedor-search')
+    path('fornecedor/search/', FornecedorSearch.as_view(), name='fornecedor-search'),
+    path('fornecedor/relatorio/', RelatorioFornecedorView.as_view(), name='fornecedor-relatorio')
 ]

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00838F;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #00838F;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .produto-section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .produto-info {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .produto-info strong {
+            color: #555;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Relatório de Produtos</h1>
+
+    {% for produto in produtos %}
+    <div class="produto-section">
+        <h2>Produto #{{ produto.IdProduto }} - {{ produto.NomeProduto }}</h2>
+        <div class="produto-info">
+            <strong>Preço:</strong> R$ {{ produto.Preco|floatformat:2 }}<br>
+            <strong>Estoque:</strong> {{ produto.Estoque }} unidades<br>
+            <strong>Descrição:</strong> {{ produto.Descricao }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="footer">Relatório gerado automaticamente pelo sistema.</div>
+</body>
+
+</html>

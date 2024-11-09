@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import VendaListAPIView, VendaCreateAPIView, VendaRetrieveAPIView, VendaDestroyAPIView, VendaUpdateAPIView, VendaSearch, RelatorioView
+from .views import VendaListAPIView, VendaCreateAPIView, VendaRetrieveAPIView, VendaDestroyAPIView, VendaUpdateAPIView, VendaSearch
+from relatorios.views import RelatorioVendaView
 
 urlpatterns = [
     path('vendas/', VendaListAPIView.as_view(), name='vendas-list'),
@@ -8,5 +9,5 @@ urlpatterns = [
     path('venda/delete/<int:pk>', VendaDestroyAPIView.as_view(), name='venda-delete'),
     path('venda/update/<int:pk>', VendaUpdateAPIView.as_view(), name='venda-update'),
     path('venda/search/', VendaSearch.as_view(), name='venda-search'),
-    path('venda/relatorio/', RelatorioView.as_view(), name='venda-relatorio')
+    path('venda/relatorio/', RelatorioVendaView.as_view(), name='venda-relatorio')
 ]

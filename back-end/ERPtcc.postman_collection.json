@@ -98,7 +98,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cliente/search/?query=Marcos",
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/search/?query=Mar",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -117,7 +117,7 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "Marcos"
+									"value": "Mar"
 								}
 							]
 						}
@@ -200,6 +200,39 @@
 					"response": []
 				},
 				{
+					"name": "cliente relatorio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/relatorio/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"relatorio",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "cliente",
 					"request": {
 						"method": "DELETE",
@@ -212,7 +245,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cliente/delete/2",
+							"raw": "http://127.0.0.1:8000/api/v1/cliente/delete/12",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -226,7 +259,7 @@
 								"v1",
 								"cliente",
 								"delete",
-								"2"
+								"12"
 							]
 						}
 					},
@@ -273,7 +306,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "### Endpoints Principais\n\n1. **Listar Clientes** (`GET /clientes/`)\n    \n    - Recupera uma lista de todos os clientes cadastrados. Ideal para visualização geral dos registros de clientes.\n        \n2. **Pesquisar Clientes** (`GET /cliente/search/`)\n    \n    1. Permite a busca de clientes específicos utilizando parâmetros de consulta, como o nome ou parte dele.\n        \n\n`GET /cliente/search/?query=Mar`\n\n1. **Criar Cliente** (`POST /cliente/create/`)\n    \n    1. Endpoint para criar um novo cliente. Inclui campos como nome, CPF ou CNPJ, endereço, e contato.\n        \n\n`{`\n\n`\"NomePessoa\": \"Marcos Aurelio\",`\n\n`\"CPFouCNPJ\": \"711.371.500-17\",`\n\n`\"Cidade\": \"São Paulo\",`\n\n`\"NomeRua\": \"Avenida Faria Lima\",`\n\n`\"Numero\": \"2000\",`\n\n`\"NomeBairro\": \"Itaim Bibi\",`\n\n`\"Email\": \"marcos.aurelio@example.com\",`\n\n`\"Telefone\": \"(11)95566-7780\"`\n\n`}`\n\n1. **Detalhar Cliente** (`GET /cliente/detail/{id}`)\n    \n    1. Exibe informações detalhadas de um cliente específico, identificado pelo ID.\n        \n\n`GET /cliente/detail/2`\n\n1. **Relatório de Clientes** (`GET /cliente/relatorio/`)\n    \n    1. Gera um relatório completo dos clientes, útil para análise e auditoria de dados.\n        \n\n`GET /cliente/relatorio/`\n\n1. **Excluir Cliente** (`DELETE /cliente/delete/{id}`)\n    \n    1. Remove um cliente específico do sistema utilizando o ID do registro.\n        \n\n`DELETE /cliente/delete/12`\n\n1. **Atualizar Cliente** (`PUT /cliente/update/{id}`)\n    \n    1. Permite a atualização das informações de um cliente, como nome, endereço, e contato, a partir do ID.\n        \n\n{\n\n\"NomePessoa\": \"Gabriela Dias\",\n\n\"CPFouCNPJ\": \"85.493.919/0001-17\",\n\n\"NomeRua\": \"Avenida das Nações Unidas\",\n\n\"Numero\": \"150\",\n\n\"NomeBairro\": \"Brooklin\",\n\n\"Email\": \"gabriela.dias@example.com\",\n\n\"Telefone\": \"(11)91098-7654\"\n\n}"
 		},
 		{
 			"name": "compra",
@@ -309,7 +343,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/compra/search/?query=ver",
+							"raw": "http://127.0.0.1:8000/api/v1/compra/search/?query=v",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -328,7 +362,7 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "ver"
+									"value": "v"
 								}
 							]
 						}
@@ -391,6 +425,32 @@
 								"compra",
 								"detail",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "compra relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/compra/relatorio/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"compra",
+								"relatorio",
+								""
 							]
 						}
 					},
@@ -885,6 +945,32 @@
 					"response": []
 				},
 				{
+					"name": "fornecedor relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/fornecedor/relatorio/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"fornecedor",
+								"relatorio",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "fornecedor",
 					"request": {
 						"method": "DELETE",
@@ -1063,6 +1149,32 @@
 								"produto",
 								"detail",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "produto relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/produto/relatorio/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"relatorio",
+								""
 							]
 						}
 					},
@@ -1402,7 +1514,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdCliente\": 1,\r\n    \"DataVenda\": \"2024-08-22\",\r\n    \"TotalVenda\": 13599.78,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10,20\",\r\n    \"Parcelas\": 2,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 40,\r\n            \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n            \"ValorUnitario\": 2599.99,\r\n            \"ValorTotal\": 5199.98\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"QtdProduto\": 50,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S23\",\r\n            \"ValorUnitario\": 4199.9,\r\n            \"ValorTotal\": 8399.8\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
+							"raw": "{\r\n    \"IdCliente\": 3,\r\n    \"DataVenda\": \"2024-08-22\",\r\n    \"TotalVenda\": 13599.78,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10,20\",\r\n    \"Parcelas\": 2,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 40,\r\n            \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n            \"ValorUnitario\": 2599.99,\r\n            \"ValorTotal\": 5199.98\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"QtdProduto\": 50,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S23\",\r\n            \"ValorUnitario\": 4199.9,\r\n            \"ValorTotal\": 8399.8\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1451,6 +1563,64 @@
 								"venda",
 								"detail",
 								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "venda search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/search/?query=ma",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "ma"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "venda relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/relatorio/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"relatorio",
+								""
 							]
 						}
 					},

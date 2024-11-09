@@ -29,19 +29,14 @@ class FornecedorUpdateAPIView(generics.UpdateAPIView):
 class FornecedorSearch(APIView):
     def get(self, request, *args, **kwargs):
         query = request.query_params.get('query', None)
-
         if query:
             fornecedorSeach = Fornecedor.objects.filter(
                 Q(NomeFantasia__icontains=query) | Q(CNPJ__icontains=query)
             )
         else:
             fornecedorSeach = Fornecedor.objects.all()
-
         pagination_class = PageNumberPagination()
         pagination_class.page_size = 10
-
         result_page = pagination_class.paginate_queryset(fornecedorSeach, request)
-
         serializer_class = FornecedorSerializer(result_page, many=True)
-
         return pagination_class.get_paginated_response(serializer_class.data)
