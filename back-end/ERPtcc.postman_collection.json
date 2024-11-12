@@ -890,7 +890,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"NomeFantasia\": \"Techno Sound\",\r\n        \"NomeJuridico\": \"Techno Sound Equipamentos Eletrônicos Ltda.\",\r\n        \"Email\": \"suporte@technosound.com.br\",\r\n        \"Telefone\": \"(11)90123-4560\",\r\n        \"CNPJ\": \"74.148.096/0001-76\",\r\n        \"NomeRua\": \"Avenida do Som\",\r\n        \"Numero\": \"950\",\r\n        \"NomeBairro\": \"Eletrônico\"\r\n    }",
+							"raw": "{\r\n        \"NomeFantasia\": \"Techno Sound\",\r\n        \"NomeJuridico\": \"Techno Sound Equipamentos Eletrônicos Ltda.\",\r\n        \"Email\": \"suporte@technosound.com.br\",\r\n        \"Telefone\": \"(11)90123-4560\",\r\n        \"CNPJ\": \"33.330.947/0001-10\",\r\n        \"NomeRua\": \"Avenida do Som\",\r\n        \"Numero\": \"950\",\r\n        \"NomeBairro\": \"Eletrônico\",\r\n        \"Cidade\": \"Cianorte\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"

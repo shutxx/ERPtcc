@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from .models import Fornecedor
-#from .utils import valida_cnpj
 from utils.util import valida_cnpj, valida_Telefone
-# import re
 
 class FornecedorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,7 +14,8 @@ class FornecedorSerializer(serializers.ModelSerializer):
             'CNPJ', 
             'NomeRua', 
             'Numero', 
-            'NomeBairro' 
+            'NomeBairro',
+            'Cidade'
         ]
 
     def validate_CNPJ(self, cnpj):

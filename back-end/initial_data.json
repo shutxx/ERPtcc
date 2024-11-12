@@ -7,6 +7,7 @@
             "NomeRua": "Rua das Flores",
             "Numero": "123",
             "NomeBairro": "Jardim Botânico",
+            "Cidade": "Rio de Janeiro",
             "Email": "ana.silva@example.com",
             "Telefone": "(21)99999-1234"
         }
@@ -19,6 +20,7 @@
             "NomeRua": "Rua dos Pássaros",
             "Numero": "456",
             "NomeBairro": "Centro",
+            "Cidade": "Belo Horizonte",
             "Email": "carlos.pereira@example.com",
             "Telefone": "(31)98888-5555"
         }
@@ -31,6 +33,7 @@
             "NomeRua": "Avenida Paulista",
             "Numero": "789",
             "NomeBairro": "Bela Vista",
+            "Cidade": "São Paulo",
             "Email": "mariana.costa@example.com",
             "Telefone": "(11)97777-4444"
         }
@@ -43,6 +46,7 @@
             "NomeRua": "Rua dos Mares",
             "Numero": "101",
             "NomeBairro": "Barra da Tijuca",
+            "Cidade": "Rio de Janeiro",
             "Email": "joao.santos@example.com",
             "Telefone": "(21)96666-3333"
         }
@@ -55,6 +59,7 @@
             "NomeRua": "Rua do Comércio",
             "Numero": "100",
             "NomeBairro": "Vila Mariana",
+            "Cidade": "São Paulo",
             "Email": "contato@techsolutions.com.br",
             "Telefone": "(11)33333-4444"
         }
@@ -67,6 +72,7 @@
             "NomeRua": "Avenida das Américas",
             "Numero": "200",
             "NomeBairro": "Barra da Tijuca",
+            "Cidade": "Rio de Janeiro",
             "Email": "info@globalindustries.com.br",
             "Telefone": "(21)44444-5555"
         }
@@ -79,6 +85,7 @@
             "NomeRua": "Rua das Acácias",
             "Numero": "300",
             "NomeBairro": "Jardim Paulista",
+            "Cidade": "São Paulo",
             "Email": "contato@primeconsultoria.com.br",
             "Telefone": "(11)55555-6666"
         }
@@ -91,6 +98,7 @@
             "NomeRua": "Avenida Rio Branco",
             "Numero": "400",
             "NomeBairro": "Centro",
+            "Cidade": "Belo Horizonte",
             "Email": "vendas@novohorizonte.com.br",
             "Telefone": "(31)66666-7777"
         }
@@ -103,6 +111,7 @@
             "NomeRua": "Rua do Progresso",
             "Numero": "500",
             "NomeBairro": "Santo Amaro",
+            "Cidade": "Rio de Janeiro",
             "Email": "contato@futuraengenharia.com.br",
             "Telefone": "(21)77777-8888"
         }
@@ -117,7 +126,8 @@
             "CNPJ": "51.543.090/0001-06",
             "NomeRua": "Avenida do Som",
             "Numero": "950",
-            "NomeBairro": "Eletrônico"
+            "NomeBairro": "Eletrônico",
+            "Cidade": "São Paulo"
         }
     },
     {
@@ -130,7 +140,8 @@
             "CNPJ": "87.384.688/0001-39",
             "NomeRua": "Rua Verde",
             "Numero": "100",
-            "NomeBairro": "Jardim Verde"
+            "NomeBairro": "Jardim Verde",
+            "Cidade": "Rio de Janeiro"
         }
     },
     {
@@ -143,7 +154,8 @@
             "CNPJ": "30.254.030/0001-95",
             "NomeRua": "Avenida das Construções",
             "Numero": "200",
-            "NomeBairro": "Centro"
+            "NomeBairro": "Centro",
+            "Cidade": "Belo Horizonte"
         }
     },
     {
@@ -156,7 +168,8 @@
             "CNPJ": "92.109.577/0001-54",
             "NomeRua": "Rua dos Livros",
             "Numero": "300",
-            "NomeBairro": "Centro"
+            "NomeBairro": "Centro",
+            "Cidade": "São Paulo"
         }
     },
     {
@@ -169,7 +182,8 @@
             "CNPJ": "72.987.336/0001-09",
             "NomeRua": "Avenida Café",
             "Numero": "400",
-            "NomeBairro": "Centro"
+            "NomeBairro": "Centro",
+            "Cidade": "Rio de Janeiro"
         }
     },
     {
@@ -182,7 +196,8 @@
             "CNPJ": "85.382.177/0001-52",
             "NomeRua": "Rua da Inovação",
             "Numero": "500",
-            "NomeBairro": "Tecnologia"
+            "NomeBairro": "Tecnologia",
+            "Cidade": "São Paulo"
         }
     },
     {
@@ -195,7 +210,8 @@
             "CNPJ": "74.615.735/0001-66",
             "NomeRua": "Rua das Ferramentas",
             "Numero": "600",
-            "NomeBairro": "Ferramentas"
+            "NomeBairro": "Ferramentas",
+            "Cidade": "Rio de Janeiro"
         }
     },
     {
@@ -208,7 +224,8 @@
             "CNPJ": "53.633.124/0001-70",
             "NomeRua": "Rua do Design",
             "Numero": "700",
-            "NomeBairro": "Arquitetura"
+            "NomeBairro": "Arquitetura",
+            "Cidade": "Belo Horizonte"
         }
     },
     {
@@ -221,7 +238,8 @@
             "CNPJ": "72.062.058/0001-70",
             "NomeRua": "Avenida Educação",
             "Numero": "800",
-            "NomeBairro": "Educação"
+            "NomeBairro": "Educação",
+            "Cidade": "Belo Horizonte"
         }
     },
     {
@@ -234,7 +252,8 @@
             "CNPJ": "09.739.382/0001-44",
             "NomeRua": "Rua das Entregas",
             "Numero": "900",
-            "NomeBairro": "Logística"
+            "NomeBairro": "Logística",
+            "Cidade": "Belo Horizonte"
         }
     },
     {
