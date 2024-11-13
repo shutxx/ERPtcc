@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-from django.contrib.auth.models import User
+from rest_framework import serializers
+from django.contrib.auth.models import Permission, Group, User
 
 
 class TokenSerializer(serializers.ModelSerializer):
@@ -54,3 +55,22 @@ class UsuarioSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+class PermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Permission
+        fields = ['id', 'name', 'codename', 'content_type']
+
+class GroupSerializer(serializers.ModelSerializer):
+    permissions = PermissionSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Group
+        fields = ['id', 'name', 'permissions']
+
+class UserPermissionSerializer(serializers.ModelSerializer):
+    user_permissions = PermissionSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'user_permissions']
