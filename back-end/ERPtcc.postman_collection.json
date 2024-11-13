@@ -1253,7 +1253,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"AllanSergio\",\r\n    \"password\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"username\": \"allanShuttxx\",\r\n    \"password\": \"07081995\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1281,7 +1281,7 @@
 					"response": []
 				},
 				{
-					"name": "Token",
+					"name": "Tokens",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1305,7 +1305,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/token/",
+							"raw": "http://127.0.0.1:8000/api/v1/tokens/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1317,7 +1317,7 @@
 							"path": [
 								"api",
 								"v1",
-								"token",
+								"tokens",
 								""
 							]
 						}
@@ -1334,7 +1334,50 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 4b35f6d7286fa143bc5b52bb49dcfaa89acfa25e",
+								"value": "Token 739234eb0d33b4decf85fd5409663d985920c6ab",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/usuarios/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permission",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 79aaddce31d2cb29645644986449b6dd187bd96e",
 								"type": "text",
 								"disabled": true
 							}
@@ -1349,7 +1392,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/usuarios/list/",
+							"raw": "http://127.0.0.1:8000/api/v1/permissions",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1361,8 +1404,138 @@
 							"path": [
 								"api",
 								"v1",
-								"usuarios",
-								"list",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permission update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 739234eb0d33b4decf85fd5409663d985920c6ab",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"permissions\": [50,51]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/5/permissions/update/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"5",
+								"permissions",
+								"update",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permission delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 79aaddce31d2cb29645644986449b6dd187bd96e",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"permissions\": [3]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/4/permissions/update/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"4",
+								"permissions",
+								"update",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user permission list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a69d461096b67f4e3cc3a1b1c16e9a6b7c0ed432",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/5/permissions/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"5",
+								"permissions",
 								""
 							]
 						}
@@ -1412,13 +1585,13 @@
 					"response": []
 				},
 				{
-					"name": "Logout/Delete Token",
+					"name": "Logout",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 9f2ed14a43fef6860d1bf300d19197ee62aafbc1",
+								"value": "Token 79aaddce31d2cb29645644986449b6dd187bd96e",
 								"type": "text"
 							}
 						],
@@ -1432,7 +1605,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/logout/9f2ed14a43fef6860d1bf300d19197ee62aafbc1",
+							"raw": "http://127.0.0.1:8000/api/v1/logout/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1445,7 +1618,7 @@
 								"api",
 								"v1",
 								"logout",
-								"9f2ed14a43fef6860d1bf300d19197ee62aafbc1"
+								""
 							]
 						}
 					},
@@ -1457,7 +1630,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/usuario/detail/5",
+							"raw": "http://127.0.0.1:8000/api/v1/usuario/detail/4",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1471,7 +1644,7 @@
 								"v1",
 								"usuario",
 								"detail",
-								"5"
+								"4"
 							]
 						}
 					},
