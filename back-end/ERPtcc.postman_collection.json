@@ -38,9 +38,8 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 36b4a41bfdfd2319335053999da85bbd4244d28b",
-								"type": "text",
-								"disabled": true
+								"value": "Token {{token}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -92,9 +91,8 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 36b4a41bfdfd2319335053999da85bbd4244d28b",
-								"type": "text",
-								"disabled": true
+								"value": "Token {{token}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -376,7 +374,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdFornecedor\": 2,\r\n    \"DataCompra\": \"2024-08-22\",\r\n    \"ValorTotal\": 123199.78,\r\n    \"FormaPagamento\": \"A Prazo\",\r\n    \"Prazo\": \"10,20,30,40\",\r\n    \"Parcelas\": 4,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n            \"ValorUnitario\": 6499.0,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 142978.00\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S23\",\r\n            \"ValorUnitario\": 4299.0,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 94578.00\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"IdFornecedor\": 2,\r\n    \"DataCompra\": \"2024-10-20\",\r\n    \"ValorTotal\": 123199.78,\r\n    \"FormaPagamento\": \"A Prazo\",\r\n    \"Prazo\": \"10,20,30,40\",\r\n    \"Parcelas\": 4,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n            \"ValorUnitario\": 6499.0,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 142978.00\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S23\",\r\n            \"ValorUnitario\": 4299.0,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 94578.00\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -436,7 +434,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/compra/relatorio/",
+							"raw": "http://127.0.0.1:8000/api/v1/compra/relatorio/?data_inicio=2024-10-01&data_fim=2024-10-31&fornecedor=2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -451,6 +449,20 @@
 								"compra",
 								"relatorio",
 								""
+							],
+							"query": [
+								{
+									"key": "data_inicio",
+									"value": "2024-10-01"
+								},
+								{
+									"key": "data_fim",
+									"value": "2024-10-31"
+								},
+								{
+									"key": "fornecedor",
+									"value": "2"
+								}
 							]
 						}
 					},
@@ -1248,6 +1260,19 @@
 			"item": [
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseToken = pm.response.json().token.key;\r",
+									"pm.collectionVariables.set(\"token\", responseToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1334,7 +1359,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 739234eb0d33b4decf85fd5409663d985920c6ab",
+								"value": "Token {{token}}",
 								"type": "text"
 							}
 						],
@@ -1507,7 +1532,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token a69d461096b67f4e3cc3a1b1c16e9a6b7c0ed432",
+								"value": "Token {{token}}",
 								"type": "text"
 							}
 						],
@@ -1591,7 +1616,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 79aaddce31d2cb29645644986449b6dd187bd96e",
+								"value": "Token {{token}}",
 								"type": "text"
 							}
 						],
@@ -1861,6 +1886,12 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
 		}
 	]
 }

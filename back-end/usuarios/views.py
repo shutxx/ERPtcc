@@ -59,7 +59,7 @@ class PermissionListAPIView(generics.ListAPIView):
     queryset = Permission.objects.all()
     serializer_class = PermissionSerializer
     pagination_class = PermissionPagination
-    #permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser]
 
 class UsuarioPermissionUpdateAPIView(views.APIView):
     permission_classes = [IsAdminUser]
