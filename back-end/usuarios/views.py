@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.pagination import PageNumberPagination
 from django.utils.timezone import now
 from .serializers import TokenSerializer, UsuarioSerializer, UsuarioTokenSerializer
 from .serializers import PermissionSerializer
@@ -52,10 +53,13 @@ class UsuarioRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = UsuarioSerializer
     permission_classes = [IsAdminUser]
 
+class PermissionPagination(PageNumberPagination):
+    page_size = 100
 class PermissionListAPIView(generics.ListAPIView):
     queryset = Permission.objects.all()
     serializer_class = PermissionSerializer
-    permission_classes = [IsAdminUser]
+    pagination_class = PermissionPagination
+    #permission_classes = [IsAdminUser]
 
 class UsuarioPermissionUpdateAPIView(views.APIView):
     permission_classes = [IsAdminUser]
