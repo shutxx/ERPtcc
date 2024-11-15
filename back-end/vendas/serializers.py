@@ -6,6 +6,8 @@ from clientes.models import Cliente
 from clientes.serializers import ClienteSerializer
 from contas.models import ContaReceber
 from produtos.models import Produto
+from django.db import transaction
+
 
 class ItensVendaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,29 +73,33 @@ class VendaSerializer(serializers.ModelSerializer):
 
         cliente = Cliente.objects.get(pk=cliente_id)
         
-        venda = Venda.objects.create(IdCliente=cliente, **validated_data)
-        for item_data in itens_venda_data:
-            item = ItensVenda.objects.create(IdVenda=venda, **item_data)
+        try:
+            with transaction.atomic():
+                venda = Venda.objects.create(IdCliente=cliente, **validated_data)
+                for item_data in itens_venda_data:
+                    item = ItensVenda.objects.create(IdVenda=venda, **item_data)
 
-            nome = item.NomeProduto
-            produto_id = item.IdProduto.IdProduto
-            quantidade = item.QtdProduto
+                    nome = item.NomeProduto
+                    produto_id = item.IdProduto.IdProduto
+                    quantidade = item.QtdProduto
 
-            qtd = Produto.objects.get(IdProduto=produto_id)
-            qtd.remover_quantidade(nome , quantidade)
+                    qtd = Produto.objects.get(IdProduto=produto_id)
+                    qtd.remover_quantidade(nome , quantidade)
 
-        contador_parcela = 1
-        for dias in prazo:
-            data_vencimento = data_venda + timedelta(days=int(dias))
-            ContaReceber.objects.create(
-                IdVenda=venda,
-                Valor=valor_parcela,
-                DataVencimento=data_vencimento,
-                DataEntrada=data_entrada,
-                Status=False
-            )
-            contador_parcela += 1
-            
+                contador_parcela = 1
+                for dias in prazo:
+                    data_vencimento = data_venda + timedelta(days=int(dias))
+                    ContaReceber.objects.create(
+                        IdVenda=venda,
+                        Valor=valor_parcela,
+                        DataVencimento=data_vencimento,
+                        DataEntrada=data_entrada,
+                        Status=False
+                    )
+                    contador_parcela += 1
+        except Exception as e:
+            raise ValidationError(e)
+
         return venda
     
     def update(self, instance, validated_data):

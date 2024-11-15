@@ -7,6 +7,7 @@ from fornecedores.serializers import FornecedorSerializer
 from contas.models import ContaPagar
 from produtos.models import Produto
 
+
 class ItensCompraSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItensCompra

@@ -88,60 +88,73 @@
             text-align: center;
             color: #777;
         }
+
+        .not-compra-section {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 <body>
     <h1>Relatório de Compra</h1>
 
-    {% for compra in compras %}
-    <div class="compra-section"> 
-        <h2>Compra #{{ compra.IdCompra }} - Data: {{ compra.DataCompra }}</h2>
+    {%  if compras %}
+        {% for compra in compras %}
+            <div class="compra-section"> 
+                <h2>Compra #{{ compra.IdCompra }} - Data: {{ compra.DataCompra }}</h2>
 
-        <!-- Informações do fornecedor -->
-        <div class="fornecedor-info"> 
-            <strong>Fornecedor:</strong> {{ compra.IdFornecedor.NomeFantasia }}<br>
-            <strong>Razão Social:</strong> {{ compra.IdFornecedor.NomeJuridico }}<br>
-            <strong>Email:</strong> {{ compra.IdFornecedor.Email }}<br>
-            <strong>Telefone:</strong> {{ compra.IdFornecedor.Telefone }}<br>
-            <strong>CNPJ:</strong> {{ compra.IdFornecedor.CNPJ }}<br>
-            <strong>Endereço:</strong> {{ compra.IdFornecedor.NomeRua }}, 
-                                        {{ compra.IdFornecedor.Numero }} - 
-                                        {{ compra.IdFornecedor.NomeBairro }}<br>
-        </div>
+                <div class="fornecedor-info"> 
+                    <strong>Fornecedor:</strong> {{ compra.IdFornecedor.NomeFantasia }}<br>
+                    <strong>Razão Social:</strong> {{ compra.IdFornecedor.NomeJuridico }}<br>
+                    <strong>Email:</strong> {{ compra.IdFornecedor.Email }}<br>
+                    <strong>Telefone:</strong> {{ compra.IdFornecedor.Telefone }}<br>
+                    <strong>CNPJ:</strong> {{ compra.IdFornecedor.CNPJ }}<br>
+                    <strong>Endereço:</strong> {{ compra.IdFornecedor.NomeRua }}, 
+                                                {{ compra.IdFornecedor.Numero }} - 
+                                                {{ compra.IdFornecedor.NomeBairro }}<br>
+                </div>
 
-        <!-- Itens da compra -->
-        <h3>Itens da Compra</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome do Produto</th>
-                    <th>Quantidade</th>
-                    <th>Valor Unitário</th>
-                    <th>Valor Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in compra.itens_compra.all %}
-                    {% if item.NomeProduto and item.QtdProduto and item.ValorUnitario and item.ValorTotal %}
+                <h3>Itens da Compra</h3>
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{ item.NomeProduto }}</td>
-                            <td>{{ item.QtdProduto }}</td>
-                            <td>R$ {{ item.ValorUnitario|floatformat:2 }}</td>
-                            <td>R$ {{ item.ValorTotal|floatformat:2 }}</td>
+                            <th>Nome do Produto</th>
+                            <th>Quantidade</th>
+                            <th>Valor Unitário</th>
+                            <th>Valor Total</th>
                         </tr>
-                    {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                        {% for item in compra.itens_compra.all %}
+                            {% if item.NomeProduto and item.QtdProduto and item.ValorUnitario and item.ValorTotal %}
+                                <tr>
+                                    <td>{{ item.NomeProduto }}</td>
+                                    <td>{{ item.QtdProduto }}</td>
+                                    <td>R$ {{ item.ValorUnitario|floatformat:2 }}</td>
+                                    <td>R$ {{ item.ValorTotal|floatformat:2 }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
 
-        <!-- Resumo da compra -->
-        <div class="compra-resumo">
-            <strong>Total da Compra:</strong> R$ {{ compra.ValorTotal|floatformat:2 }}<br>
-            <strong>Forma de Pagamento:</strong> {{ compra.FormaPagamento }}<br>
-            <strong>Parcelas:</strong> {{ compra.Parcelas }} | <strong>Prazo:</strong> {{ compra.Prazo }}
+                <div class="compra-resumo">
+                    <strong>Total da Compra:</strong> R$ {{ compra.ValorTotal|floatformat:2 }}<br>
+                    <strong>Forma de Pagamento:</strong> {{ compra.FormaPagamento }}<br>
+                    <strong>Parcelas:</strong> {{ compra.Parcelas }} | <strong>Prazo:</strong> {{ compra.Prazo }}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="cliente-section">
+            <h2 style="text-align: center; font-size: 18px; margin-top: 20px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                Não há nenhuma compra com essas informações
+            </h2>
         </div>
-    </div>
-    {% endfor %}
+    {% endif %}
 
     <div class="footer">
         <p>Relatório gerado automaticamente pelo sistema.</p>
