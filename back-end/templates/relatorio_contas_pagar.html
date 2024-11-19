@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Contas a Pagar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00838F;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #00838F;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .conta-section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .conta-info {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .conta-info strong {
+            color: #555;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #00838F;
+            color: white;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            text-align: center;
+            color: #777;
+        }
+
+        .statusPendente{
+            background-color: #cf4848
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Relatório de Contas a Pagar</h1>
+
+    {% if contasAPagar %}
+    {% for data in contasAPagar %}
+    <div class="conta-section">
+        <h2>Compra #{{ data.compra.IdCompra }}</h2>
+
+        <div class="conta-info">
+            <strong>Fornecedor:</strong> {{ data.compra.IdFornecedor.NomeFantasia }}<br>
+            <strong>Data da Compra:</strong> {{ data.compra.DataCompra }}<br>
+            <strong>Valor Total:</strong> R$ {{ data.compra.ValorTotal|floatformat:2 }}<br>
+            <strong>Forma de Pagamento:</strong> {{ data.compra.FormaPagamento }}<br>
+        </div>
+    </div>
+
+    <h3>Parcelas</h3>
+    <table>
+        <thead>
+            <tr>
+
+                <th>Valor</th>
+                <th>Data de Vencimento</th>
+                <th>Data de Entrada</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for parcela in data.parcelas %}
+            <tr>
+                <td>R$ {{ parcela.Valor|floatformat:2 }}</td>
+                <td>{{ parcela.DataVencimento }}</td>
+                <td>{{ parcela.DataEntrada }}</td>
+                {% if parcela.Status %}
+                    <td class="statusPago">Pago</td>
+                {% else %}
+                    <td class="statusPendente">Pendente</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+    {% else %}
+    <p>Não há contas a pagar no período selecionado.</p>
+    {% endif %}
+
+    <div class="footer">
+        <p>Relatório gerado automaticamente pelo sistema.</p>
+    </div>
+</body>
+
+</html>
