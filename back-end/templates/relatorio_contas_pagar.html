@@ -80,6 +80,10 @@
         .statusPendente{
             background-color: #cf4848
         }
+
+        .statusPago{
+            background-color: #4bce47
+        }
     </style>
 </head>
 
@@ -105,8 +109,8 @@
             <tr>
 
                 <th>Valor</th>
-                <th>Data de Vencimento</th>
                 <th>Data de Entrada</th>
+                <th>Data de Vencimento</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -114,8 +118,8 @@
             {% for parcela in data.parcelas %}
             <tr>
                 <td>R$ {{ parcela.Valor|floatformat:2 }}</td>
-                <td>{{ parcela.DataVencimento }}</td>
                 <td>{{ parcela.DataEntrada }}</td>
+                <td>{{ parcela.DataVencimento }}</td>
                 {% if parcela.Status %}
                     <td class="statusPago">Pago</td>
                 {% else %}
