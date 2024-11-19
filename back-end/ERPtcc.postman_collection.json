@@ -304,8 +304,7 @@
 					},
 					"response": []
 				}
-			],
-			"description": "### Endpoints Principais\n\n1. **Listar Clientes** (`GET /clientes/`)\n    \n    - Recupera uma lista de todos os clientes cadastrados. Ideal para visualização geral dos registros de clientes.\n        \n2. **Pesquisar Clientes** (`GET /cliente/search/`)\n    \n    1. Permite a busca de clientes específicos utilizando parâmetros de consulta, como o nome ou parte dele.\n        \n\n`GET /cliente/search/?query=Mar`\n\n1. **Criar Cliente** (`POST /cliente/create/`)\n    \n    1. Endpoint para criar um novo cliente. Inclui campos como nome, CPF ou CNPJ, endereço, e contato.\n        \n\n`{`\n\n`\"NomePessoa\": \"Marcos Aurelio\",`\n\n`\"CPFouCNPJ\": \"711.371.500-17\",`\n\n`\"Cidade\": \"São Paulo\",`\n\n`\"NomeRua\": \"Avenida Faria Lima\",`\n\n`\"Numero\": \"2000\",`\n\n`\"NomeBairro\": \"Itaim Bibi\",`\n\n`\"Email\": \"marcos.aurelio@example.com\",`\n\n`\"Telefone\": \"(11)95566-7780\"`\n\n`}`\n\n1. **Detalhar Cliente** (`GET /cliente/detail/{id}`)\n    \n    1. Exibe informações detalhadas de um cliente específico, identificado pelo ID.\n        \n\n`GET /cliente/detail/2`\n\n1. **Relatório de Clientes** (`GET /cliente/relatorio/`)\n    \n    1. Gera um relatório completo dos clientes, útil para análise e auditoria de dados.\n        \n\n`GET /cliente/relatorio/`\n\n1. **Excluir Cliente** (`DELETE /cliente/delete/{id}`)\n    \n    1. Remove um cliente específico do sistema utilizando o ID do registro.\n        \n\n`DELETE /cliente/delete/12`\n\n1. **Atualizar Cliente** (`PUT /cliente/update/{id}`)\n    \n    1. Permite a atualização das informações de um cliente, como nome, endereço, e contato, a partir do ID.\n        \n\n{\n\n\"NomePessoa\": \"Gabriela Dias\",\n\n\"CPFouCNPJ\": \"85.493.919/0001-17\",\n\n\"NomeRua\": \"Avenida das Nações Unidas\",\n\n\"Numero\": \"150\",\n\n\"NomeBairro\": \"Brooklin\",\n\n\"Email\": \"gabriela.dias@example.com\",\n\n\"Telefone\": \"(11)91098-7654\"\n\n}"
+			]
 		},
 		{
 			"name": "compra",
@@ -374,7 +373,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdFornecedor\": 2,\r\n    \"DataCompra\": \"2024-10-20\",\r\n    \"ValorTotal\": 123199.78,\r\n    \"FormaPagamento\": \"A Prazo\",\r\n    \"Prazo\": \"10,20,30,40\",\r\n    \"Parcelas\": 4,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n            \"ValorUnitario\": 6499.0,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 142978.00\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S23\",\r\n            \"ValorUnitario\": 4299.0,\r\n            \"QtdProduto\": 22,\r\n            \"ValorTotal\": 94578.00\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"IdFornecedor\": 2,\r\n    \"DataCompra\": \"2024-11-14\",\r\n    \"ValorTotal\": 599.78,\r\n    \"FormaPagamento\": \"A Prazo\",\r\n    \"Prazo\": \"10,20,30,40\",\r\n    \"Parcelas\": 4,\r\n    \"itens_compra\": [\r\n        {\r\n            \"IdProduto\": 10,\r\n            \"NomeProduto\": \"Roteador TP-Link Archer AX73\",\r\n            \"ValorUnitario\": 599.0,\r\n            \"QtdProduto\": 1,\r\n            \"ValorTotal\": 599.00\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -434,7 +433,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/compra/relatorio/?data_inicio=2024-10-01&data_fim=2024-10-31&fornecedor=2",
+							"raw": "http://127.0.0.1:8000/api/v1/compra/relatorio/?produto=10",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -453,15 +452,27 @@
 							"query": [
 								{
 									"key": "data_inicio",
-									"value": "2024-10-01"
+									"value": "2024-11-01",
+									"disabled": true
 								},
 								{
 									"key": "data_fim",
-									"value": "2024-10-31"
+									"value": "2024-11-30",
+									"disabled": true
 								},
 								{
 									"key": "fornecedor",
-									"value": "2"
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "produto",
+									"value": "10"
+								},
+								{
+									"key": "top_fornecedor",
+									"value": "1",
+									"disabled": true
 								}
 							]
 						}
@@ -553,6 +564,32 @@
 								"api",
 								"v1",
 								"contas-pagar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta relatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-pagar/relatorio/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-pagar",
+								"relatorio",
 								""
 							]
 						}
@@ -1707,12 +1744,34 @@
 				},
 				{
 					"name": "criar venda",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdCliente\": 3,\r\n    \"DataVenda\": \"2024-08-22\",\r\n    \"TotalVenda\": 13599.78,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10,20\",\r\n    \"Parcelas\": 2,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 1,\r\n            \"QtdProduto\": 40,\r\n            \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n            \"ValorUnitario\": 2599.99,\r\n            \"ValorTotal\": 5199.98\r\n        },\r\n        {\r\n            \"IdProduto\": 2,\r\n            \"QtdProduto\": 50,\r\n            \"NomeProduto\": \"Smartphone Samsung Galaxy S23\",\r\n            \"ValorUnitario\": 4199.9,\r\n            \"ValorTotal\": 8399.8\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n",
+							"raw": "{\r\n    \"IdCliente\": 16,\r\n    \"DataVenda\": \"2024-12-20\",\r\n    \"TotalVenda\": 70965.00,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"1\",\r\n    \"Parcelas\": 1,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 5,\r\n            \"NomeProduto\": \"Caixa de Som JBL Charge 5\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 999.00,\r\n            \"ValorTotal\": 19980.00\r\n        },\r\n        {\r\n            \"IdProduto\": 6,\r\n            \"NomeProduto\": \"Smartwatch Apple Watch Series 8\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 3399.00,\r\n            \"ValorTotal\": 50985.0\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1772,7 +1831,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/venda/search/?query=ma",
+							"raw": "http://127.0.0.1:8000/api/v1/venda/search/?query=Te",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1791,7 +1850,7 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "ma"
+									"value": "Te"
 								}
 							]
 						}
@@ -1804,7 +1863,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/venda/relatorio/",
+							"raw": "http://127.0.0.1:8000/api/v1/venda/relatorio/?top_cliente=2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1819,6 +1878,32 @@
 								"venda",
 								"relatorio",
 								""
+							],
+							"query": [
+								{
+									"key": "data_inicio",
+									"value": "2024-11-01",
+									"disabled": true
+								},
+								{
+									"key": "data_fim",
+									"value": "2024-11-30",
+									"disabled": true
+								},
+								{
+									"key": "cliente",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "produto",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "top_cliente",
+									"value": "2"
+								}
 							]
 						}
 					},
