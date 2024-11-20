@@ -1888,6 +1888,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"motivo\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/v1/venda/estorno/?venda_id=1",
 							"protocol": "http",
@@ -2095,7 +2104,25 @@
 					"name": "estornos",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/estornos/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-receber",
+								"estornos",
+								""
+							]
+						}
 					},
 					"response": []
 				}
