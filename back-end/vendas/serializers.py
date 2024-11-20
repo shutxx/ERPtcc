@@ -49,6 +49,10 @@ class VendaSerializer(serializers.ModelSerializer):
             'FormaPagamento',
             'Prazo',
             'Parcelas',
+            'TotalSemDesconto',
+            'TotalComDesconto',
+            'DescontoValor',
+            'DescontoPercentual',
             'IdCliente',
             'itens_venda'
         ] 

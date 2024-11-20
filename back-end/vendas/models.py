@@ -10,6 +10,10 @@ class Venda(models.Model):
     Prazo = models.CharField(blank=False, max_length=15, default='default')
     Parcelas = models.IntegerField(blank=False, default=1)
     FormaPagamento = models.CharField(blank=False, max_length=15, default='default')
+    TotalSemDesconto = models.FloatField(blank=False, max_length=10, default=0)
+    TotalComDesconto = models.FloatField(blank=False, max_length=10, default=0)
+    DescontoValor = models.FloatField(blank=False, max_length=10, default=0)
+    DescontoPercentual = models.IntegerField(blank=False, default=0)
 
     class Meta:
         verbose_name = 'Venda'

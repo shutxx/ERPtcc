@@ -8,7 +8,7 @@ from contas.models import ContaPagar, ContaReceber
 from contas.serializers import ContaPagarSerializer, ContaReceberSerializer
 from fornecedores.models import Fornecedor
 from produtos.models import Produto
-from xhtml2pdf import pisa
+from xhtml2pdf import pisa # type: ignore
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from rest_framework.views import APIView

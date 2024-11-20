@@ -112,6 +112,10 @@ class VendaAPITestCase(APITestCase):
             "FormaPagamento": "Avista",
             "Prazo": "10,20",
             "Parcelas": 2,
+            "TotalSemDesconto": 13599.78,
+            "TotalComDesconto": 13599.78,
+            "DescontoValor": 0,
+            "DescontoPercentual": 0,
             "itens_venda": [
                 {
                     "IdProduto": 1,
@@ -145,6 +149,10 @@ class VendaAPITestCase(APITestCase):
             "FormaPagamento": "A Prazo",
             "Prazo": "10,20,30,40,50",
             "Parcelas": 5,
+            "TotalSemDesconto": 13599.78,
+            "TotalComDesconto": 13599.78,
+            "DescontoValor": 0,
+            "DescontoPercentual": 0,
             "itens_venda": [
                 {
                     "IdProduto": 1,
