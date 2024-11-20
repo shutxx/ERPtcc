@@ -1,10 +1,11 @@
 from rest_framework.views import APIView
 from compras.models import Compra
 from compras.serializers import CompraContaSerializer
+from vendas.serializers import VendaContaSerializer
 from vendas.models import Venda
 from clientes.models import Cliente
 from contas.models import ContaPagar, ContaReceber
-from contas.serializers import ContaPagarSerializer
+from contas.serializers import ContaPagarSerializer, ContaReceberSerializer
 from fornecedores.models import Fornecedor
 from produtos.models import Produto
 from xhtml2pdf import pisa
@@ -152,13 +153,26 @@ class RelatorioProdutoView(APIView):
 
         return response
     
+
 class RelatorioContaAPagarView(APIView):
     def get(self, request, *args, **kwargs):
-        response_data = []
+        data_inicio = request.query_params.get('data_inicio')
+        data_fim = request.query_params.get('data_fim')
+        fornecedor = request.query_params.get('fornecedor')
+
         compras = Compra.objects.all()
-        
+        if data_inicio:
+            compras = compras.filter(DataCompra__gte=parse_date(data_inicio))
+        if data_fim:
+            compras = compras.filter(DataCompra__lte=parse_date(data_fim))
+        if fornecedor:
+            compras = compras.filter(IdFornecedor=int(fornecedor))
+
+        compras = compras.prefetch_related('contapagar_set')
+
+        response_data = []
         for compra in compras:
-            contas_pagar = ContaPagar.objects.filter(IdCompra=compra.IdCompra)
+            contas_pagar = compra.contapagar_set.all()
             contas_pagar_serializer = ContaPagarSerializer(contas_pagar, many=True)
             compra_serializer = CompraContaSerializer(compra)
 
@@ -170,6 +184,47 @@ class RelatorioContaAPagarView(APIView):
         html_content = render_to_string('relatorio_contas_pagar.html', {'contasAPagar': response_data})
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="relatorio_contas_pagar.pdf"'
+
+        try:
+            pisa_status = pisa.CreatePDF(html_content, dest=response)
+            if pisa_status.err:
+                return Response({'error': 'Erro ao gerar o PDF'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return response
+    
+
+class RelatorioContaAReceberView(APIView):
+    def get(self, request, *args, **kwargs):
+        data_inicio = request.query_params.get('data_inicio')
+        data_fim = request.query_params.get('data_fim')
+        cliente = request.query_params.get('cliente')
+
+        vendas = Venda.objects.all()
+        if data_inicio:
+            vendas = vendas.filter(DataVenda__gte=parse_date(data_inicio))
+        if data_fim:
+            vendas = vendas.filter(DataVenda__lte=parse_date(data_fim))
+        if cliente:
+            vendas = vendas.filter(IdCliente=int(cliente))
+
+        vendas = vendas.prefetch_related('contareceber_set')
+
+        response_data = []
+        for venda in vendas:
+            contas_receber = venda.contareceber_set.all()
+            contas_receber_serializer = ContaReceberSerializer(contas_receber, many=True)
+            venda_serializer = VendaContaSerializer(venda)
+
+            response_data.append({
+                "venda": venda_serializer.data,
+                "parcelas": contas_receber_serializer.data
+            })
+
+        html_content = render_to_string('relatorio_contas_receber.html', {'contasAReceber': response_data})
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="relatorio_contas_receber.pdf"'
 
         try:
             pisa_status = pisa.CreatePDF(html_content, dest=response)

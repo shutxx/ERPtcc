@@ -576,7 +576,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/conta-pagar/relatorio/",
+							"raw": "http://127.0.0.1:8000/api/v1/conta-pagar/relatorio/pagar/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -590,7 +590,25 @@
 								"v1",
 								"conta-pagar",
 								"relatorio",
+								"pagar",
 								""
+							],
+							"query": [
+								{
+									"key": "data_inicio",
+									"value": "2024-10-22",
+									"disabled": true
+								},
+								{
+									"key": "data_fim",
+									"value": "2024-10-23",
+									"disabled": true
+								},
+								{
+									"key": "fornecedor",
+									"value": "2",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -804,6 +822,50 @@
 								"conta-receber",
 								"detail",
 								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta receber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/relatorio/receber/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"conta-receber",
+								"relatorio",
+								"receber",
+								""
+							],
+							"query": [
+								{
+									"key": "data_inicio",
+									"value": "2024-12-21",
+									"disabled": true
+								},
+								{
+									"key": "data_fim",
+									"value": "2024-12-21",
+									"disabled": true
+								},
+								{
+									"key": "cliente",
+									"value": "16",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -1771,7 +1833,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdCliente\": 16,\r\n    \"DataVenda\": \"2024-12-20\",\r\n    \"TotalVenda\": 70965.00,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"1\",\r\n    \"Parcelas\": 1,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 5,\r\n            \"NomeProduto\": \"Caixa de Som JBL Charge 5\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 999.00,\r\n            \"ValorTotal\": 19980.00\r\n        },\r\n        {\r\n            \"IdProduto\": 6,\r\n            \"NomeProduto\": \"Smartwatch Apple Watch Series 8\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 3399.00,\r\n            \"ValorTotal\": 50985.0\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"IdCliente\": 16,\r\n    \"DataVenda\": \"2024-12-20\",\r\n    \"TotalVenda\": 70965.00,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10, 15, 20\",\r\n    \"Parcelas\": 3,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 5,\r\n            \"NomeProduto\": \"Caixa de Som JBL Charge 5\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 999.00,\r\n            \"ValorTotal\": 19980.00\r\n        },\r\n        {\r\n            \"IdProduto\": 6,\r\n            \"NomeProduto\": \"Smartwatch Apple Watch Series 8\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 3399.00,\r\n            \"ValorTotal\": 50985.0\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
