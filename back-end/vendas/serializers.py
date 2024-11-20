@@ -32,8 +32,7 @@ class VendaContaSerializer(serializers.ModelSerializer):
             'TotalVenda',
             'FormaPagamento',
             'Prazo',
-            'IdCliente',
-            'Parcelas',
+            'IdCliente'
         ] 
 
 class VendaSerializer(serializers.ModelSerializer):

@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import ContaPagar, ContaReceber
-from .serializers import ContaPagarSerializer, ContaReceberSerializer
+from .models import ContaPagar, ContaReceber, EstornoLog
+from .serializers import ContaPagarSerializer, ContaReceberSerializer, EstornoSerializer
 from rest_framework.pagination import PageNumberPagination
 from vendas.serializers import VendaContaSerializer
 from vendas.models import Venda
@@ -77,3 +77,9 @@ class ContasReceber():
     class ContaReceberDestroyAPIView(generics.DestroyAPIView):
         queryset =  ContaReceber.objects.all()
         serializer_class = ContaReceberSerializer 
+
+
+class Estornos():
+    class EstornoView(generics.ListAPIView):
+        queryset =  EstornoLog.objects.all()
+        serializer_class = EstornoSerializer

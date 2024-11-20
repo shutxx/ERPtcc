@@ -807,7 +807,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/detail/3",
+							"raw": "http://127.0.0.1:8000/api/v1/conta-receber/detail/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -821,14 +821,14 @@
 								"v1",
 								"conta-receber",
 								"detail",
-								"3"
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "conta receber",
+					"name": "conta relatorio",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1833,7 +1833,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IdCliente\": 16,\r\n    \"DataVenda\": \"2024-12-20\",\r\n    \"TotalVenda\": 70965.00,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10, 15, 20\",\r\n    \"Parcelas\": 3,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 5,\r\n            \"NomeProduto\": \"Caixa de Som JBL Charge 5\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 999.00,\r\n            \"ValorTotal\": 19980.00\r\n        },\r\n        {\r\n            \"IdProduto\": 6,\r\n            \"NomeProduto\": \"Smartwatch Apple Watch Series 8\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 3399.00,\r\n            \"ValorTotal\": 50985.0\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"IdCliente\": 16,\r\n    \"DataVenda\": \"2024-12-20\",\r\n    \"TotalVenda\": 70965.00,\r\n    \"FormaPagamento\": \"Avista\",\r\n    \"Prazo\": \"10, 15, 20\",\r\n    \"Parcelas\": 3,\r\n    \"TotalSemDesconto\": 70965.00,\r\n    \"TotalComDesconto\": 70965.00,\r\n    \"DescontoValor\": 0.0,\r\n    \"DescontoPercentual\": 0,\r\n    \"itens_venda\": [\r\n        {\r\n            \"IdProduto\": 5,\r\n            \"NomeProduto\": \"Caixa de Som JBL Charge 5\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 999.00,\r\n            \"ValorTotal\": 19980.00\r\n        },\r\n        {\r\n            \"IdProduto\": 6,\r\n            \"NomeProduto\": \"Smartwatch Apple Watch Series 8\",\r\n            \"QtdProduto\": 1,\r\n            \"ValorUnitario\": 3399.00,\r\n            \"ValorTotal\": 50985.0\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1862,12 +1862,66 @@
 					"response": []
 				},
 				{
+					"name": "criar estorno",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/estorno/?venda_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"estorno",
+								""
+							],
+							"query": [
+								{
+									"key": "venda_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "venda",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/venda/detail/3",
+							"raw": "http://127.0.0.1:8000/api/v1/venda/detail/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1881,7 +1935,7 @@
 								"v1",
 								"venda",
 								"detail",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -2029,6 +2083,19 @@
 								"1"
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estorno",
+			"item": [
+				{
+					"name": "estornos",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}

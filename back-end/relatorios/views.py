@@ -4,7 +4,6 @@ from compras.serializers import CompraContaSerializer
 from vendas.serializers import VendaContaSerializer
 from vendas.models import Venda
 from clientes.models import Cliente
-from contas.models import ContaPagar, ContaReceber
 from contas.serializers import ContaPagarSerializer, ContaReceberSerializer
 from fornecedores.models import Fornecedor
 from produtos.models import Produto

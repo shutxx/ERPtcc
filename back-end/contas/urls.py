@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ContasPagar, ContasReceber
+from .views import ContasPagar, ContasReceber, Estornos
 from relatorios.views import RelatorioContaAPagarView, RelatorioContaAReceberView
 
 urlpatterns = [
@@ -16,4 +16,6 @@ urlpatterns = [
     path('conta-receber/update/<int:pk>', ContasReceber.ContaReceberUpdateAPIView.as_view(), name='conta-receber-update'),
     path('conta-receber/delete/<int:pk>', ContasReceber.ContaReceberDestroyAPIView.as_view(), name='conta-receber-delete'),
     path('conta-receber/relatorio/receber/', RelatorioContaAReceberView.as_view(), name='conta-receber-relatorio'),
+
+    path('conta-receber/estornos/', Estornos.EstornoView.as_view(), name='conta-estornos'),
 ]

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ContaPagar, ContaReceber
+from .models import ContaPagar, ContaReceber, EstornoLog
 
 class ContaPagarSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,5 +22,15 @@ class ContaReceberSerializer(serializers.ModelSerializer):
             'Valor',
             'DataEntrada',
             'DataVencimento',
-            'Status'
+            'Status',
+            'Estornada'
+        ]
+
+class EstornoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EstornoLog
+        fields = [
+            'IdVenda',
+            'DataEstorno',
+            'Motivo'
         ]

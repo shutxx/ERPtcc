@@ -4,9 +4,7 @@ from django.db.models import Q
 from .models import Compra
 from .serializers import CompraSerializer
 from rest_framework.pagination import PageNumberPagination
-from xhtml2pdf import pisa
-from django.http import HttpResponse
-from django.template.loader import render_to_string
+
 
 class CompraListAPIView(generics.ListAPIView):
     queryset = Compra.objects.all()
