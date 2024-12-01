@@ -9,6 +9,7 @@ class Fornecedor(models.Model):
     Numero = models.CharField(blank=False, max_length=10)
     NomeBairro = models.CharField(blank=False, max_length=255)
     Cidade = models.CharField(blank=False, max_length=25, default='default')
+    Estado = models.CharField(blank=False, max_length=25, default='default')
     Email = models.EmailField(blank=False, max_length=255)
     Telefone = models.CharField(blank=False, max_length=14)
 

@@ -15,7 +15,8 @@ class FornecedorSerializer(serializers.ModelSerializer):
             'NomeRua', 
             'Numero', 
             'NomeBairro',
-            'Cidade'
+            'Cidade',
+            'Estado'
         ]
 
     def validate_CNPJ(self, cnpj):

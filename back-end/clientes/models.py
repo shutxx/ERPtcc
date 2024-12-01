@@ -5,6 +5,7 @@ class Cliente(models.Model):
     NomePessoa = models.CharField(blank=False, max_length=255)
     CPFouCNPJ = models.CharField(blank=False, max_length=18)
     Cidade = models.CharField(blank=False, max_length=25, default='default')
+    Estado = models.CharField(blank=False, max_length=25, default='default')
     NomeRua = models.CharField(blank=False, max_length=255)
     Numero = models.CharField(blank=False, max_length=10)
     NomeBairro = models.CharField(blank=False, max_length=255)
