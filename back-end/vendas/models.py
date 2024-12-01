@@ -14,6 +14,7 @@ class Venda(models.Model):
     TotalComDesconto = models.FloatField(blank=False, max_length=10, default=0)
     DescontoValor = models.FloatField(blank=False, max_length=10, default=0)
     DescontoPercentual = models.IntegerField(blank=False, default=0)
+    Estornada = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Venda'

@@ -65,9 +65,11 @@ class VendaEstornoView(APIView):
 
         contas_receber = venda.contareceber_set.all()
         for conta in contas_receber:
-            print(conta.Status)
             conta.Estornada = True
             conta.save()
+
+        venda.Estornada = True
+        venda.save()
 
         itens_venda = ItensVenda.objects.all()
         itens_venda = itens_venda.filter(IdVenda=venda_id)

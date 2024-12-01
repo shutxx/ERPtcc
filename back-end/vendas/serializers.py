@@ -52,6 +52,7 @@ class VendaSerializer(serializers.ModelSerializer):
             'TotalComDesconto',
             'DescontoValor',
             'DescontoPercentual',
+            'Estornada',
             'IdCliente',
             'itens_venda'
         ] 
