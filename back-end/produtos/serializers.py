@@ -9,6 +9,7 @@ class ProdutoSerializer(serializers.ModelSerializer):
             'NomeProduto',
             'Descricao',
             'Preco',
+            'PrecoCompra',
             'UnidMedida',
             'Estoque'
         ]

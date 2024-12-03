@@ -129,14 +129,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token 66bed21b494e90cc45ee73b121610e5a80ced943",
-								"type": "text",
-								"disabled": true
+								"value": "Token {{token}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n    \"NomePessoa\": \"Marcos Aurelio\",\r\n    \"CPFouCNPJ\": \"711.371.500-17\",\r\n    \"Cidade\": \"São Paulo\",\r\n    \"NomeRua\": \"Avenida Faria Lima\",\r\n    \"Numero\": \"2000\",\r\n    \"NomeBairro\": \"Itaim Bibi\",\r\n    \"Email\": \"eduardo.moreira@example.com\",\r\n    \"Telefone\": \"(11)95566-7780\"\r\n}",
+							"raw": " {\r\n    \"NomePessoa\": \"Marcos Aurelio\",\r\n    \"CPFouCNPJ\": \"28.359.081/0001-30\",\r\n    \"Cidade\": \"São Paulo\",\r\n    \"Estado\": \"São Paulo\",\r\n    \"NomeRua\": \"Avenida Faria Lima\",\r\n    \"Numero\": \"2000\",\r\n    \"NomeBairro\": \"Itaim Bibi\",\r\n    \"Email\": \"eduardo.moreira@example.com\",\r\n    \"Telefone\": \"(11)95566-7780\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1211,7 +1210,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n        \"Descricao\": \"Câmera mirrorless com sensor APS-C, gravação em 4K, foco automático rápido, e tela LCD articulada.\",\r\n        \"Preco\": 6499.00,\r\n        \"UnidMedida\": \"Unidade\",\r\n        \"Estoque\": 22\r\n    }",
+							"raw": "{\r\n        \"NomeProduto\": \"Câmera Sony Alpha a6400\",\r\n        \"Descricao\": \"Câmera mirrorless com sensor APS-C, gravação em 4K, foco automático rápido, e tela LCD articulada.\",\r\n        \"Preco\": 6499.00,\r\n        \"PrecoCompra\": 3900.00,\r\n        \"UnidMedida\": \"Unidade\",\r\n        \"Estoque\": 22\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1862,69 +1861,6 @@
 					"response": []
 				},
 				{
-					"name": "criar estorno",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"motivo\": \"teste\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/venda/estorno/?venda_id=1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"venda",
-								"estorno",
-								""
-							],
-							"query": [
-								{
-									"key": "venda_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "venda",
 					"request": {
 						"method": "GET",
@@ -2121,6 +2057,69 @@
 								"conta-receber",
 								"estornos",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar estorno",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"motivo\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/venda/estorno/?venda_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"venda",
+								"estorno",
+								""
+							],
+							"query": [
+								{
+									"key": "venda_id",
+									"value": "1"
+								}
 							]
 						}
 					},

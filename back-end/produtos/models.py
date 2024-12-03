@@ -8,6 +8,7 @@ class Produto(models.Model):
     Preco = models.FloatField(blank=False, max_length=10)
     UnidMedida = models.CharField(blank=False, max_length=20)
     Estoque = models.IntegerField(blank=False)
+    PrecoCompra = models.FloatField(blank=False, max_length=10, default=0.0)
 
     class Meta:
         verbose_name = 'Produto'
